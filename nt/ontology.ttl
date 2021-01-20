@@ -1,0 +1,142 @@
+@prefix : <file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <file:///D:/pycode/library/d2rq/d2rq-0.8.1> .
+
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1#four2five
+:four2five rdf:type owl:ObjectProperty ;
+           rdfs:domain [ rdf:type owl:Restriction ;
+                         owl:onProperty <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> ;
+                         owl:someValuesFrom owl:rational
+                       ] ;
+           rdfs:range [ rdf:type owl:Restriction ;
+                        owl:onProperty <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> ;
+                        owl:someValuesFrom owl:rational
+                      ] .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1#one2two
+:one2two rdf:type owl:ObjectProperty ;
+         rdfs:domain [ rdf:type owl:Restriction ;
+                       owl:onProperty <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> ;
+                       owl:someValuesFrom owl:rational
+                     ] ;
+         rdfs:range [ rdf:type owl:Restriction ;
+                      owl:onProperty <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> ;
+                      owl:someValuesFrom owl:rational
+                    ] .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1#three2four
+:three2four rdf:type owl:ObjectProperty ;
+            rdfs:domain [ rdf:type owl:Restriction ;
+                          owl:onProperty <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> ;
+                          owl:someValuesFrom owl:rational
+                        ] ;
+            rdfs:range [ rdf:type owl:Restriction ;
+                         owl:onProperty <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> ;
+                         owl:someValuesFrom owl:rational
+                       ] .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1#two2three
+:two2three rdf:type owl:ObjectProperty ;
+           rdfs:domain [ rdf:type owl:Restriction ;
+                         owl:onProperty <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> ;
+                         owl:someValuesFrom owl:rational
+                       ] ;
+           rdfs:range [ rdf:type owl:Restriction ;
+                        owl:onProperty <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> ;
+                        owl:someValuesFrom owl:rational
+                      ] .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> rdf:type owl:ObjectProperty ;
+                                                          owl:inverseOf <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol2fea> ;
+                                                          rdfs:domain :vocab:features ;
+                                                          rdfs:range :vocab:sol_features .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol2fea
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol2fea> rdf:type owl:ObjectProperty ;
+                                                          rdfs:domain :vocab:sol_features ;
+                                                          rdfs:range :vocab:features .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> rdf:type owl:DatatypeProperty ;
+                                                                    rdfs:domain :vocab:features .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> rdf:type owl:DatatypeProperty ;
+                                                                    rdfs:domain :vocab:features .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> rdf:type owl:DatatypeProperty ;
+                                                                    rdfs:domain :vocab:features .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> rdf:type owl:DatatypeProperty ;
+                                                                    rdfs:domain :vocab:features .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> rdf:type owl:DatatypeProperty ;
+                                                                    rdfs:domain :vocab:features .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> rdf:type owl:DatatypeProperty ;
+                                                                            rdfs:domain :vocab:sol_features .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> rdf:type owl:DatatypeProperty ;
+                                                                            rdfs:domain :vocab:sol_features .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> rdf:type owl:DatatypeProperty ;
+                                                                            rdfs:domain :vocab:sol_features .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> rdf:type owl:DatatypeProperty ;
+                                                                            rdfs:domain :vocab:sol_features .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> rdf:type owl:DatatypeProperty ;
+                                                                            rdfs:domain :vocab:sol_features .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab:features
+:vocab:features rdf:type owl:Class .
+
+
+###  file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab:sol_features
+:vocab:sol_features rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>知识地图</title>
+    <script src="static/js/echarts.min.js"></script>
+    <script src="static/js/jquery-3.3.1.js"></script>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="static/layui/layui.js"></script>
+    <link rel="stylesheet" href="static/layui/css/layui.css"  media="all">
+</head>
+<style>.link {  fill: none;  stroke: #666;  stroke-width: 1.5px;}#licensing {  fill: green;}.link.licensing {  stroke: green;}.link.resolved {  stroke-dasharray: 0,2 1;}circle {  fill: #ccc;  stroke: #333;  stroke-width: 1.5px;}text {  font: 12px Microsoft YaHei;  pointer-events: none;  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;}.linetext {    font-size: 12px Microsoft YaHei;}
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+button {
+  padding: 10px 20px;
+}
+ .option{
+
+    height:37px;
+    width:120px;
+    line-height:30px;
+    border:1px solid 	#DCDCDC;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+    }
+</style>
+
+<body >
+  <div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">故障录入与案例查询系统 </div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="/">主页</a></li>
+      <li class="layui-nav-item ">
+        <a href="javascript:;">故障录入</a>
+        <dl class="layui-nav-child">
+          <dd><a href="single_fault">单故障录入</a></dd>
+          <dd><a href="batch_fault">批量故障录入</a></dd>
+          <dd><a href="flowchart">流程图录入</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item">
+        <a href="javascript:;">案例查询</a>
+        <dl class="layui-nav-child">
+          <dd><a href="precise_query">精确查询</a></dd>
+          <dd><a href="fuzz_query">模糊查询</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item layui-this">
+        <a href="map">知识地图</a>
+        </li>
+    </ul>
+  </div>
+  </div>
+
+ <script type="text/javascript" src="/layui/layui.js"></script>
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+<br><br>
+    <center>
+        <table>
+            <tr>
+
+                <td>
+                        <div >
+                          <label class="layui-form-label">按条件搜索</label>
+                        </div>
+                </td>
+                <td>
+                          <div >
+
+                            <select id="option" class="option" name="modules" lay-verify="required" lay-search="">
+                                <option value="1" >案例编号</option>
+                                <option value="2">故障特征</option>
+                                <option value="3">解决方案特征</option>
+                                <option value="4">整体知识地图</option>
+
+        </select>
+      </div>
+                </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td>
+                    <input id="input1" name="search" width="100" class="layui-input" onchange="input_change()" type="text" value="">
+
+                    </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td>
+                    <button id="button_search"class="layui-btn layui-btn-sm" onclick="search()" >查询</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td>
+                    <button id="exc"class="layui-btn layui-btn-sm" onclick="output()" >导出</button>
+
+                </td>
+            </tr>
+            </table>
+    </center>
+
+<div id="main" style="width:1200px;height:1000px"></div>
+<script type="text/javascript">
+
+function input_change(){
+}
+function output(){
+    $.post('/output',{},function (data) {
+    console.log("success");
+    alert("导出成功");
+    }
+    )
+}
+<!--function getData() {-->
+      <!--let data = {-->
+        <!--name: "根节点1",-->
+        <!--value: 0,-->
+        <!--children: []-->
+      <!--};-->
+      <!--for (let i = 1; i <= 10; i++) {-->
+        <!--let obj = {-->
+          <!--name: "节点" + i,-->
+          <!--value: i,-->
+          <!--children: [],-->
+        <!--};-->
+        <!--for (let j = 1; j <= 5; j++) {-->
+          <!--let obj2 = {-->
+            <!--name: `节点1-${i}-${j}`,-->
+            <!--value: 1 + "-" + i + "-" + j,-->
+          <!--};-->
+          <!--if(j%2==1){-->
+            <!--obj2.children=[]-->
+            <!--for (let k = 1; k <= 3; k++) {-->
+              <!--let obj3 = {-->
+                <!--name: `节点1-${i}-${j}-${k}`,-->
+                <!--value: 1 + "-" + i + "-" + j+'-'+k,-->
+              <!--};-->
+              <!--obj2.children.push(obj3);-->
+            <!--}-->
+          <!--}-->
+
+          <!--obj.children.push(obj2);-->
+        <!--}-->
+
+        <!--data.children.push(obj);-->
+      <!--}-->
+      <!--let arr=[]-->
+      <!--arr.push(data)-->
+      <!--//-->
+      <!--arr=handleData(arr,0)-->
+			<!--console.log(arr);-->
+      <!--return arr;-->
+    <!--}-->
+<!--var colors=[-->
+	<!--"#00ADD0",-->
+	<!--"#FFA12F",-->
+	<!--&lt;!&ndash;"#B62AFF",&ndash;&gt;-->
+	<!--&lt;!&ndash;"#604BFF",&ndash;&gt;-->
+	<!--&lt;!&ndash;"#6E35FF",&ndash;&gt;-->
+	<!--&lt;!&ndash;"#002AFF",&ndash;&gt;-->
+	<!--&lt;!&ndash;"#20C0F4",&ndash;&gt;-->
+	<!--&lt;!&ndash;"#95F300",&ndash;&gt;-->
+	<!--&lt;!&ndash;"#04FDB8",&ndash;&gt;-->
+	<!--&lt;!&ndash;"#AF5AFF"&ndash;&gt;-->
+<!--]-->
+<!--function handleData(data,index,color='#00f6ff') {-->
+  <!--//index标识第几层-->
+  <!--return data.map((item,index2)=>{-->
+     <!--//计算出颜色-->
+    <!--if(index==1){-->
+      <!--color = colors.find((item, eq) => eq == index2 % 10);-->
+    <!--}-->
+    <!--// 设置节点大小-->
+    <!--if(index===0 || index===1){-->
+        <!--item.label= {-->
+          <!--position: "inside",-->
+        <!--//   rotate: 0,-->
+        <!--//   borderRadius: "50%",-->
+        <!--}-->
+    <!--}-->
+    <!--// 设置label大小-->
+    <!--switch(index){-->
+      <!--case 0:-->
+        <!--item.symbolSize=70-->
+        <!--break;-->
+      <!--case 1:-->
+        <!--item.symbolSize=50-->
+        <!--break;-->
+      <!--default:-->
+        <!--item.symbolSize=10-->
+        <!--break;-->
+    <!--}-->
+    <!--// 设置线条颜色-->
+    <!--item.lineStyle= { color: color }-->
+
+    <!--if (item.children) {//存在子节点-->
+      <!--item.itemStyle = {-->
+        <!--borderColor: color,-->
+        <!--color:color-->
+      <!--};-->
+      <!--item.children=handleData(item.children,index+1,color)-->
+    <!--} else {//不存在-->
+      <!--item.itemStyle = {-->
+        <!--color:'transparent',-->
+        <!--borderColor: color-->
+      <!--};-->
+    <!--}-->
+    <!--return item;-->
+  <!--})-->
+<!--}-->
+<!--function search(){-->
+     <!--var data = {-->
+        <!--name: "案例",-->
+        <!--value: 0,-->
+        <!--children: [-->
+            <!--{-->
+                <!--name: "子节点1",-->
+                <!--value: 1,-->
+                <!--children: [-->
+                    <!--{-->
+                        <!--name: "子节点1-1",-->
+                        <!--value: 1,-->
+                        <!--children: [-->
+
+                        <!--]-->
+                    <!--},-->
+                <!--]-->
+            <!--},-->
+            <!--{-->
+                <!--name: "子节点2",-->
+                <!--value: 1,-->
+                <!--children: [-->
+                    <!--{-->
+                        <!--name: "子节点2-2",-->
+                        <!--value: 1,-->
+                        <!--children: [-->
+
+                        <!--]-->
+                    <!--},-->
+                <!--]-->
+            <!--},-->
+        <!--]-->
+      <!--};-->
+      <!--&lt;!&ndash;for (let i = 1; i <= 10; i++) {&ndash;&gt;-->
+        <!--&lt;!&ndash;let obj = {&ndash;&gt;-->
+          <!--&lt;!&ndash;name: "节点" + i,&ndash;&gt;-->
+          <!--&lt;!&ndash;value: i,&ndash;&gt;-->
+          <!--&lt;!&ndash;children: [],&ndash;&gt;-->
+        <!--&lt;!&ndash;};&ndash;&gt;-->
+        <!--&lt;!&ndash;for (let j = 1; j <= 5; j++) {&ndash;&gt;-->
+          <!--&lt;!&ndash;let obj2 = {&ndash;&gt;-->
+            <!--&lt;!&ndash;name: `节点1-${i}-${j}`,&ndash;&gt;-->
+            <!--&lt;!&ndash;value: 1 + "-" + i + "-" + j,&ndash;&gt;-->
+          <!--&lt;!&ndash;};&ndash;&gt;-->
+          <!--&lt;!&ndash;if(j%2==1){&ndash;&gt;-->
+            <!--&lt;!&ndash;obj2.children=[]&ndash;&gt;-->
+            <!--&lt;!&ndash;for (let k = 1; k <= 3; k++) {&ndash;&gt;-->
+              <!--&lt;!&ndash;let obj3 = {&ndash;&gt;-->
+                <!--&lt;!&ndash;name: `节点1-${i}-${j}-${k}`,&ndash;&gt;-->
+                <!--&lt;!&ndash;value: 1 + "-" + i + "-" + j+'-'+k,&ndash;&gt;-->
+              <!--&lt;!&ndash;};&ndash;&gt;-->
+              <!--&lt;!&ndash;obj2.children.push(obj3);&ndash;&gt;-->
+            <!--&lt;!&ndash;}&ndash;&gt;-->
+          <!--&lt;!&ndash;}&ndash;&gt;-->
+
+          <!--&lt;!&ndash;obj.children.push(obj2);&ndash;&gt;-->
+        <!--&lt;!&ndash;}&ndash;&gt;-->
+
+        <!--&lt;!&ndash;data.children.push(obj);&ndash;&gt;-->
+      <!--&lt;!&ndash;}&ndash;&gt;-->
+    <!--var treeData = [data];-->
+    <!--var LastData = handleData(treeData, 0);-->
+    <!--var myselect=document.getElementById("option");-->
+    <!--var input1=document.getElementById("input1");-->
+    <!--input1=input1.value;-->
+    <!--var index=myselect.selectedIndex ; // selectedIndex代表的是你所选中项的index-->
+    <!--var v1=myselect.options[index].value;-->
+    <!--var t1=myselect.options[index].text;-->
+
+     <!--$.post('/allData',{'v1':v1,'t1':t1,'input1':input1},function (data) {-->
+            <!--jsondata=JSON.parse(data)//把获取到的json数据解析出来-->
+            <!--console.log("jsondata:",jsondata);-->
+            <!--console.log("test: ", jsondata);-->
+            <!--var list = [];-->
+            <!--for(var i = 0; i < jsondata.list.length; i++) {-->
+                <!--if(list.length == 0) {-->
+                    <!--list.push(jsondata.list[i]);-->
+                <!--} else {-->
+                    <!--var flag = true;-->
+                    <!--var len = list.length;-->
+                    <!--for(var j = 0; j < len; j++) {-->
+                        <!--if(list[j].name == jsondata.list[i].name) {-->
+                            <!--flag = false;-->
+                            <!--break;-->
+                        <!--}-->
+                    <!--}-->
+                    <!--if(flag) {-->
+                        <!--list.push(jsondata.list[i]);-->
+                    <!--}-->
+                <!--}-->
+            <!--}-->
+            <!--console.log("list: ", list);-->
+            <!--var myChart = echarts.init(document.getElementById('main'));-->
+            <!--var categories = [];-->
+            <!--console.log("color_num",jsondata.color_num);-->
+            <!--for (var i = 0; i < jsondata.color_num; i++) {-->
+                <!--categories[i] = {-->
+                    <!--name:   '案例'+i-->
+                <!--};-->
+                <!--categories[0]={name:''};-->
+            <!--}-->
+            <!--var option = {-->
+                <!--type: "tree",-->
+                <!--backgroundColor: "#fff",-->
+                <!--toolbox: { //工具栏-->
+                  <!--show: true,-->
+                  <!--iconStyle: {-->
+                    <!--borderColor: "#03ceda"-->
+                  <!--},-->
+                  <!--feature: {-->
+                    <!--restore: {}-->
+                  <!--}-->
+                <!--},-->
+                <!--tooltip: {//提示框-->
+                  <!--trigger: "item",-->
+                  <!--triggerOn: "mousemove",-->
+                  <!--backgroundColor: "rgba(1,70,86,1)",-->
+                  <!--borderColor: "rgba(0,246,255,1)",-->
+                  <!--borderWidth: 0.5,-->
+                  <!--textStyle: {-->
+                    <!--fontSize: 10-->
+                  <!--}-->
+                <!--},-->
+                <!--series: [-->
+                  <!--{-->
+                    <!--type: "tree",-->
+                    <!--hoverAnimation: true, //hover样式-->
+                    <!--data:LastData,-->
+                    <!--top: 0,-->
+                    <!--bottom: 0,-->
+                    <!--left: 0,-->
+                    <!--right: 0,-->
+                    <!--layout: "radial",-->
+                    <!--symbol: "circle",-->
+                    <!--symbolSize: 10,-->
+                                <!--nodePadding: 20,-->
+                    <!--animationDurationUpdate: 750,-->
+                    <!--expandAndCollapse: true, //子树折叠和展开的交互，默认打开-->
+                    <!--initialTreeDepth: 2,-->
+                    <!--roam: true, //是否开启鼠标缩放和平移漫游。scale/move/true-->
+                    <!--focusNodeAdjacency: true,-->
+                    <!--itemStyle: {-->
+                      <!--borderWidth: 1,-->
+                    <!--},-->
+                    <!--label: { //标签样式-->
+                      <!--color: "#000",-->
+                      <!--fontSize: 10,-->
+                      <!--fontFamily: "SourceHanSansCN",-->
+                       <!--position: "inside",-->
+                      <!--rotate: 0,-->
+                    <!--},-->
+                    <!--lineStyle: {-->
+                      <!--width: 1,-->
+                                    <!--curveness:0.5,-->
+                    <!--}-->
+                  <!--}-->
+                <!--]-->
+              <!--};-->
+            <!--myChart.setOption(option);-->
+            <!--myChart.on('click', function(params) {-->
+                <!--console.log('click', params);-->
+
+            <!--})-->
+    <!--});-->
+
+<!--}-->
+
+function search(){
+    var myselect=document.getElementById("option");
+    var input1=document.getElementById("input1");
+    input1=input1.value;
+    var index=myselect.selectedIndex ; // selectedIndex代表的是你所选中项的index
+    var v1=myselect.options[index].value;
+    var t1=myselect.options[index].text;
+
+
+     $.post('/allData',{'v1':v1,'t1':t1,'input1':input1},function (data) {
+            jsondata=JSON.parse(data)//把获取到的json数据解析出来
+            console.log("jsondata:",jsondata);
+            console.log("test: ", jsondata);
+            var list = [];
+            for(var i = 0; i < jsondata.list.length; i++) {
+                if(list.length == 0) {
+                    list.push(jsondata.list[i]);
+                } else {
+                    var flag = true;
+                    var len = list.length;
+                    for(var j = 0; j < len; j++) {
+                        if(list[j].name == jsondata.list[i].name) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if(flag) {
+                        list.push(jsondata.list[i]);
+                    }
+                }
+            }
+            console.log("list: ", list);
+            var myChart = echarts.init(document.getElementById('main'));
+            var categories = [];
+            console.log("color_num",jsondata.color_num);
+            for (var i = 0; i < jsondata.color_num; i++) {
+                categories[i] = {
+                    name:   '案例'+i
+                };
+                categories[0]={name:''};
+            }
+            option = {
+                // 图的标题
+                title: {
+                    text: ''
+                },
+                // 提示框的配置
+                tooltip: {
+                    enterable: true,
+                    formatter: function (x) {
+                        var str = "";
+                        var i = 0;
+                        while(i < x.data.des.length) {
+                            str += x.data.des.substring(i, i+15)+'<br>';
+                            i += 15;
+                        }
+                        str += x.data.des.substring(i, x.data.des.length);
+                        return str;
+                    }
+                },
+                // 工具箱
+                toolbox: {
+                    // 显示工具箱
+                    show: true,
+                    feature: {
+                        mark: {
+                            show: true
+                        },
+                        // 还原
+                        restore: {
+                            show: true
+                        },
+                        // 保存为图片
+                        saveAsImage: {
+                            show: true
+                        }
+                    }
+                },
+                legend: [{
+                    // selectedMode: 'single',
+                    data: categories.map(function (a) {
+                        return a.name;
+                    })
+                }],
+                series: [{
+                    type: 'graph', // 类型:关系图
+                    layout: 'force', //图的布局，类型为力导图
+                    symbolSize: 20, // 调整节点的大小
+                    roam: true, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+                    edgeSymbol: ['circle', 'arrow'],
+                    expandAndCollapse: true,
+                    edgeSymbolSize: [2, 10],
+                    edgeLabel: {
+                        normal: {
+                            textStyle: {
+                                fontSize: 8
+                            }
+                        }
+                    },
+                    force: {
+                        repulsion: 800,
+                        edgeLength: [5, 15]
+                    },
+                    draggable: true,
+                    focusNodeAdjacency: true,
+                    lineStyle: {
+                        normal: {
+                            width: 2,
+                            color: '#4b565b',
+                        }
+                    },
+                    edgeLabel: {
+                        normal: {
+                            show: true,
+                            formatter: function (x) {
+                                return x.data.name;
+                            }
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            textStyle: {}
+                        }
+                    },
+
+                    // 数据
+                    data:list,
+                    links:jsondata.links,
+                    categories: categories,
+                }]
+            };
+            myChart.setOption(option);
+            myChart.on('click', function(params) {
+                console.log('click', params);
+
+            })
+    });
+
+}
+
+</script>
+
+
+</body>
+</html>

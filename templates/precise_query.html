@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>精确查询</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="static/layui/layui.js"></script>
+    <link rel="stylesheet" href="static/layui/css/layui.css"  media="all">
+    <script src="static/js/jquery-3.3.1.js"></script>
+    <!-- 引入jquery.js -->
+    <script src="static/js/echarts.min.js"></script>
+    <script src="static/js/d3.min.js"></script>
+
+</head>
+<style>.link {  fill: none;  stroke: #666;  stroke-width: 1.5px;}#licensing {  fill: green;}.link.licensing {  stroke: green;}.link.resolved {  stroke-dasharray: 0,2 1;}circle {  fill: #ccc;  stroke: #333;  stroke-width: 1.5px;}text {  font: 12px Microsoft YaHei;  pointer-events: none;  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;}.linetext {    font-size: 12px Microsoft YaHei;}</style>
+
+  <body>
+  <div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">故障录入与案例查询系统 </div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="/">主页</a></li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">故障录入</a>
+        <dl class="layui-nav-child">
+          <dd><a href="single_fault">单故障录入</a></dd>
+          <dd><a href="batch_fault">批量故障录入</a></dd>
+          <dd><a href="flowchart">流程图录入</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item layui-this">
+        <a href="javascript:;">案例查询</a>
+        <dl class="layui-nav-child">
+          <dd><a href="precise_query">精确查询</a></dd>
+          <dd><a href="fuzz_query">模糊查询</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item">
+        <a href="map">知识地图</a>
+        </li>
+    </ul>
+  </div>
+
+
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+
+});
+</script>
+
+
+<script type="text/javascript" src="/layui/layui.js"></script>
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+<br>
+<br>
+
+<center>
+      <h2>案例查询模块——精确查询</h2>
+     <table>
+            <tr>
+                <td>
+         <div style=" text-align:center;">故障描述:</div> </td>
+                <td>
+                    <textarea name="maintenance_plan" rows="5"cols="138"  style="resize:none"></textarea>
+                </td>
+        </tr>
+        </table>
+        <br><br>
+
+        <table>
+            <tr>
+                <td>
+
+                    <button name="recognize" class="layui-btn layui-btn-sm" onclick="GetDescribe()" >智能识别</button>
+                    </td>
+
+            </tr>
+            </table>
+      <form method="post" action="./submit_precise">
+          <br>
+          <table>
+              <tr>
+                  <td>
+                      车辆类型
+                  </td>
+
+                  <td>
+                       <input id="f1" name="weather1" autocomplete="off" class="layui-input" type="text" value=""   onblur="checkPassword()" onkeyup="checkPassword()">
+                        <span id="span_password"></span>
+                  </td>
+                  <!--<td>-->
+                      <!--<p  hidden="hidden">特征增加</p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;-->
+                  <!--</td>-->
+
+                  <td>
+                      型号
+                  </td>
+                  <td>
+                       <input id="f2" name="weather2" autocomplete="off" class="layui-input" type="text" value=""   onblur="checkPassword()" onkeyup="checkPassword()">
+                  </td>
+                  <!--<td>-->
+                      <!--<p  hidden="hidden"  >特征增加</p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;-->
+                  <!--</td>-->
+
+
+                  <td>
+                     <label>温度</label>
+                  </td>
+                  <td>
+                       <input id="f3" name="weather3" autocomplete="off" class="layui-input" type="text" value=""   onblur="checkPassword()" onkeyup="checkPassword()">
+                  </td>
+                      <!--<td>-->
+                     <!--<label>℃</label>-->
+                  <!--</td>-->
+
+
+                  <td>
+                      <label id="label" >湿度</label>
+                  </td>
+                  <td>
+                       <input  id="f4" autocomplete="off" name="weather4" class="layui-input" type="text" value=""  onblur="checkPassword()" onkeyup="checkPassword()">
+                  </td>
+                  <!--<td>-->
+                      <!--<label>%</label>-->
+                  <!--</td>-->
+
+                  </tr>
+                      <tr>
+
+                  <td>
+                     <label>气压</label>
+                  </td>
+                  <td>
+                       <input id="f5" name="weather5" autocomplete="off" class="layui-input" type="text" value=""   onblur="checkPassword()" onkeyup="checkPassword()">
+                  </td>
+                  <!--<td>-->
+                      <!--<label>hpa</label>-->
+                  <!--</td>-->
+
+                  <td>
+                      <label id="label5" >海拔</label>
+                  </td>
+                  <td>
+                       <input id="f6"  autocomplete="off" name="weather6" class="layui-input" type="text" value=""   onblur="checkPassword()" onkeyup="checkPassword()">
+                  </td>
+                  <!--<td>-->
+                      <!--<label>m</label>-->
+                  <!--</td>-->
+
+
+                  <td>
+                     <label>盐度</label>
+                  </td>
+                  <td>
+                       <input id="f7" name="weather7" autocomplete="off" class="layui-input" type="text" value=""   onblur="checkPassword()" onkeyup="checkPassword()">
+                  </td>
+                  <!--<td>-->
+                      <!--<label>ppm</label>-->
+                  <!--</td>-->
+
+                  <td>
+                      <label  >昼夜温差</label>
+                  </td>
+                  <td>
+                       <input id="f8" autocomplete="off" name="weather8" class="layui-input" type="text" value=""   onblur="checkPassword()" onkeyup="checkPassword()">
+                  </td>
+                  <!--<td>-->
+                      <!--<label>℃</label>-->
+                  <!--</td>-->
+
+                  </tr>
+
+              <tr>
+                  <td>
+                      故障特征1
+                  </td>
+
+                  <td>
+                       <input id="fe1" name="fault_features1" class="layui-input" type="text" value="">
+                  </td>
+
+
+
+
+                  <td>
+                      故障特征2
+                  </td>
+                  <td>
+                       <input id="fe2" name="fault_features2" class="layui-input" type="text" value="">
+                  </td>
+
+
+                  <td>
+                      故障特征3
+                  </td>
+                  <td>
+                      <input id="fe3" name="fault_features3" class="layui-input" type="text" value="">
+                  </td>
+
+
+                  <td>
+                      故障特征4
+                  </td>
+                  <td>
+                      <input id="fe4" name="fault_features4" class="layui-input" type="text" value="">
+                  </td>
+
+
+
+              </tr>
+
+              <tr>
+
+                  <td>
+                     <label>故障特征5</label>
+                  </td>
+                  <td>
+                       <input id="fe5" name="fault_features5" class="layui-input" type="text" value="">
+                  </td>
+
+
+                  <td>
+                      <label >故障特征6</label>
+                  </td>
+                  <td>
+                       <input  id="fe6" name="fault_features6" class="layui-input" type="text" value="">
+                  </td>
+
+
+                  <td>
+                      <label>故障特征7</label>
+                  </td>
+                  <td>
+                       <input id="fe7" name="fault_features7" class="layui-input" type="text" value="">
+                  </td>
+
+               <td>
+                      <label>故障特征8</label>
+                  </td>
+                  <td>
+                       <input id="fe8" name="fault_features8" class="layui-input" type="text" value="">
+                  </td>
+              </tr>
+              <tr>
+                   <td>
+                      <label>故障特征9</label>
+                  </td>
+                  <td>
+                       <input id="fe9" name="fault_features9" class="layui-input" type="text" value="" >
+                  </td>
+                   <td>
+                      <label>故障特征10</label>
+                  </td>
+                  <td>
+                       <input id="fe10" name="fault_features10" class="layui-input" type="text" value="">
+                  </td>
+                  <td>
+                      &nbsp;
+                  </td>
+
+                  <td>
+                      <button type="submit" class="layui-btn layui-btn-sm">精确查询</button>
+                  </td>
+                  </form>
+
+                   <td>
+
+                    <button id="exc"class="layui-btn layui-btn-sm" onclick="output()" >导出</button>
+
+                </td>
+              </tr>
+
+
+
+          </table>
+
+
+          </table>
+          <br>
+          <br>
+
+
+
+
+
+    </center>
+
+
+<br>
+    <center>
+        <table id="desc_text"></table>
+        </center>
+
+      <div id="main" style="width:1200px;height:600px"></div>
+<script>
+  function GetDescribe(){
+  var maintenance_plan=$("textarea[name='maintenance_plan']").val();
+   $.post('/zhin_query',
+     {'maintenance_plan':maintenance_plan},
+      function (data) {
+      jsondata=JSON.parse(data)//把获取到的json数据解析出来
+      console.log("jsondata",jsondata)
+      var list_num=jsondata.list_five_num;
+      var list=jsondata.list_five;
+      var weather=jsondata.weather;
+      var two=jsondata.two;
+      console.log("weather",weather);
+      console.log("two",two);
+
+      document.getElementById('f3').value=weather[0][0];
+      document.getElementById('f8').value=weather[0][1];
+      document.getElementById('f4').value=weather[1];
+      document.getElementById('f5').value=weather[2];
+      document.getElementById('f6').value=weather[3];
+      document.getElementById('f7').value=weather[4];
+      document.getElementById('f1').value=two[0];
+      document.getElementById('f2').value=two[1];
+      for(var i=0;i<list_num;i++){
+        var n='fe'+(i+1).toString();
+        document.getElementById(n).value=list[i];
+      }
+
+
+
+      }
+      )
+      }
+      function output(){
+        $.post('/output_precise',{},function (data) {
+        console.log("success");
+        alert("导出成功");
+    }
+    )
+}
+      function checkPassword(){
+        //获取密码输入
+        var uPass = document.getElementById("f1").value.trim();
+        var span = document.getElementById("span_password");
+        //对密码输入进行校验
+        if(uPass.length == 0){
+            span.innerHTML = "<font color='red' size='2'>不能为空</font>";
+            return false;
+        }else{
+        $("#span_password").html("");
+        }
+    }
+    </script>
+<script type="text/javascript">
+
+
+    $.get('/linkData').done(function (data) {
+            jsondata=JSON.parse(data)//把获取到的json数据解析出来
+            console.log("test: ", jsondata);
+            $("#desc_text").html("");
+            var cnt=i+1;
+            var obj=document.getElementById('desc_text');
+
+            console.log("desc_text",jsondata.prec_text);
+            if(jsondata.prec_text.length==1){
+            var row=obj.insertRow(-1);
+            row.innerHTML='<label style="font-size:18px;">'+jsondata.prec_text[0]+'</label> ';
+            }
+            else{
+            for(var i=0;i<jsondata.prec_text.length;i++){
+            var row=obj.insertRow(-1);
+            row.innerHTML='<label style="font-size:18px;">'+jsondata.prec_text[i]+'</label> ';
+            }}
+            var list = [];
+            for(var i = 0; i < jsondata.list.length; i++) {
+                if(list.length == 0) {
+                    list.push(jsondata.list[i]);
+                } else {
+                    var flag = true;
+                    var len = list.length;
+                    for(var j = 0; j < len; j++) {
+                        if(list[j].name == jsondata.list[i].name) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if(flag) {
+                        list.push(jsondata.list[i]);
+                    }
+                }
+            }
+            console.log("list: ", list);
+            var myChart = echarts.init(document.getElementById('main'));
+            var categories = [];
+            for (var i = 0; i < 1; i++) {
+                categories[i] = {
+                    name: '案例'
+                };
+            }
+            option = {
+                // 图的标题
+                title: {
+                    text: ''
+                },
+                // 提示框的配置
+                tooltip: {
+                    enterable: true,
+                    formatter: function (x) {
+                        var str = "";
+                        var i = 0;
+                        while(i < x.data.des.length) {
+                            str += x.data.des.substring(i, i+15)+'<br>';
+                            i += 15;
+                        }
+                        str += x.data.des.substring(i, x.data.des.length);
+                        return str;
+                    }
+                },
+                // 工具箱
+                toolbox: {
+                    // 显示工具箱
+                    show: true,
+                    feature: {
+                        mark: {
+                            show: true
+                        },
+                        // 还原
+                        restore: {
+                            show: true
+                        },
+                        // 保存为图片
+                        saveAsImage: {
+                            show: true
+                        }
+                    }
+                },
+                legend: [{
+                    // selectedMode: 'single',
+                    data: categories.map(function (a) {
+                        return a.name;
+                    })
+                }],
+                series: [{
+                    type: 'graph', // 类型:关系图
+                    layout: 'force', //图的布局，类型为力导图
+                    symbolSize: 20, // 调整节点的大小
+                    roam: true, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+                    edgeSymbol: ['circle', 'arrow'],
+                    edgeSymbolSize: [2, 10],
+                    edgeLabel: {
+                        normal: {
+                            textStyle: {
+                                fontSize: 8
+                            }
+                        }
+                    },
+                    force: {
+                        repulsion: 800,
+                        edgeLength: [5, 15]
+                    },
+                    draggable: true,
+                    focusNodeAdjacency: true,
+                    lineStyle: {
+                        normal: {
+                            width: 2,
+                            color: '#4b565b',
+                        }
+                    },
+                    edgeLabel: {
+                        normal: {
+                            show: true,
+                            formatter: function (x) {
+                                return x.data.name;
+                            }
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            textStyle: {}
+                        }
+                    },
+
+                    // 数据
+                    data:list,
+                    links:jsondata.links,
+                    categories: categories,
+                }]
+            };
+            myChart.setOption(option);
+    });
+
+
+
+</script>
+<center>
+<div id="bar" style="width:500px; height:300px;"></div>
+    <script>
+        var myChart = echarts.init(document.getElementById('bar'));
+        //get到后端定义的url--http://127.0.0.1:5000/barData
+        $.get('/barData').done(function (data) {
+            jsondata=JSON.parse(data)//把获取到的json数据解析出来
+            console.log("bardata: ", data);
+            console.log("bardata.name", jsondata.name);
+            console.log("jsondata ", jsondata["name"]);
+            myChart.setOption({
+                title: {
+                    text: '案例数量统计'
+                },
+                tooltip: {},
+                legend: {
+                    data:['姓名']
+                },
+                xAxis: {
+                    type:'category',
+                    data: jsondata['name'],//得到后端数据是json格式使用键名name获取值
+                    axisLabel: {
+                                interval: 0,
+                                formatter:function(value)
+                                {
+                                if(typeof value !== 'string'){
+                                   value = value.toString();
+                                }
+
+                                    return value.split("").join("\n");
+                                }
+                            }
+                },
+
+                yAxis: {type:'value'},
+                series: [{
+                    name: '数量',
+                    type: 'bar',
+                    data: jsondata['value']//得到后端数据是json格式使用键名value获取值
+                },
+                ]
+            });
+    });
+    </script>
+    <div id="box" style="width: 500px;height: 300px;"></div>
+<script>
+    //初始化ehcharts实例
+    var myChart1=echarts.init(document.getElementById("box"));
+    //指定图表的配置项和数据
+    $.get('/barData').done(function (data) {
+            jsondata=JSON.parse(data)//把获取到的json数据解析出来
+            console.log("bardata: ", data);
+            console.log("bardata.name", jsondata.name);
+            console.log("jsondata ", jsondata["name"]);
+            myChart1.setOption({
+                title: {
+                    text: '案例数量统计'
+                },
+                tooltip: {},
+                legend: {
+                    data:['姓名']
+                },
+                xAxis: {
+                    type:'category',
+                    data: jsondata['name'],//得到后端数据是json格式使用键名name获取值
+                    axisLabel: {
+                                interval: 0,
+                                formatter:function(value)
+                                {
+                                if(typeof value !== 'string'){
+                                   value = value.toString();
+                                }
+
+                                    return value.split("").join("\n");
+                                }
+                            }
+                },
+                yAxis: {type:'value'},
+                series: [{
+                    name: '数量',
+                    type: 'line',
+                    data: jsondata['value']//得到后端数据是json格式使用键名value获取值
+                },
+                ]
+            });
+    });
+
+</script>
+
+        <div id="pie" style="width: 500px;height:300px;"></div>
+    <script>
+      var myChart2 = echarts.init(document.getElementById("pie"));
+      $.get('/barData').done(function (data) {
+            jsondata=JSON.parse(data)//把获取到的json数据解析出来
+            console.log("bardata: ", data);
+            console.log("bardata.name", jsondata.name);
+            console.log("jsondata ", jsondata["name"]);
+            myChart2.setOption({
+                    tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    x: 'left',
+                    data:jsondata['name']
+                },
+                series: [
+                    {
+                        name:'特征数量',
+                        type:'pie',
+                        radius: ['50%', '70%'],
+                        avoidLabelOverlap: false,
+                        label: {
+                            normal: {
+                                show: false,
+                                position: 'center'
+                            },
+                            emphasis: {
+                                show: true,
+                                textStyle: {
+                                    fontSize: '30',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        },
+                        labelLine: {
+                            normal: {
+                                show: false
+                            }
+                        },
+                        data:[
+                        {value:jsondata['value'][0],name:jsondata['name'][0]},
+                        {value:jsondata['value'][1],name:jsondata['name'][1]},
+                        {value:jsondata['value'][2],name:jsondata['name'][2]},
+                        {value:jsondata['value'][3],name:jsondata['name'][3]},
+                        {value:jsondata['value'][4],name:jsondata['name'][4]},
+                        {value:jsondata['value'][5],name:jsondata['name'][5]},
+
+                            <!--{value:335, name:'直接访问'},-->
+                            <!--{value:310, name:'邮件营销'},-->
+                            <!--{value:234, name:'联盟广告'},-->
+                            <!--{value:135, name:'视频广告'},-->
+                            <!--{value:1548, name:'搜索引擎'}-->
+                        ]
+                     }
+                 ]
+            });
+    });
+
+
+    </script>
+</center>
+
+  <script>
+  function GetClassName(){
+  var arr=[];
+  var Program_features1=$("input[name='Program_features1']").val();
+  var Program_features2=$("input[name='Program_features2']").val();
+  var Program_features3=$("input[name='Program_features3']").val();
+  var Program_features4=$("input[name='Program_features4']").val();
+  var Program_features5=$("input[name='Program_features5']").val();
+  var Program_features6=$("input[name='Program_features6']").val();
+
+  var data = {
+  data: JSON.stringify({
+  "Program_features1":Program_features1,
+  "Program_features2":Program_features2,
+                    })
+   };
+
+
+
+
+   $.post('/input_fault',
+         {'Program_features1':Program_features1,'Program_features2':Program_features2,
+         'Program_features3':Program_features3,'Program_features4':Program_features4,
+         'Program_features5':Program_features5,'Program_features6':Program_features6},
+          function () {
+                })
+}
+
+  </script>
+
+  {% for msg in get_flashed_messages() %}
+<script>alert("{{ msg }}")</script>
+{% endfor %}
+
+
+  <script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+
+});
+</script>
+  <script type="text/javascript">
+/****添加新条目***/
+function checkRowsLimit()
+{
+    var rowLimit = 2;
+
+    var len=document.getElementById('filearea').rows.length;
+    if(len==rowLimit)
+    {
+        alert('抱歉，只能添加这么多条目了。');
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+var count=5;
+function addNewRow()
+{
+    var obj=document.getElementById('filearea');
+    var row=obj.insertRow(-1);
+    var c0=row.insertCell(0);
+    c0.innerHTML='<br><br><td><label class="head" style="font-size:14px;">故障特征'+count+'</label> </td> ';
+
+
+    var c1=row.insertCell(1);
+    c1.innerHTML='<td><input type=text style="width:200px" name="Program_features'+count+'" lay-verify="title" autocomplete="off" class="layui-input" style="margin-left:1px;" value="" onpropertychange=changeFlagValue()></td>';
+
+    count++;
+    var c2=row.insertCell(2);
+    c2.innerHTML='&nbsp;&nbsp;&nbsp;&nbsp;<a class="layui-btn layui-btn-sm" href="javascript:void(0)" onclick="removeRow(this)">特征删除</a><br><br>';
+    changeFlag = true;
+    try
+    {
+        comm_set_page_height();
+    }
+    catch (e)
+    {
+    }
+
+}
+function removeRow(fontobj)
+{
+    if(confirm("确定取消该项吗?"))
+{
+    var obj=document.getElementById('filearea');
+    var n=fontobj.parentNode.parentNode.rowIndex;
+    obj.deleteRow(n);
+}
+}</script>
+
+          <script>
+
+        function myFunction1()
+        {
+         document.getElementById("fault_features5").style.display="block";
+         document.getElementById("label5").style.display="block";
+         document.getElementById("button5").style.display="block";
+        };
+        function myFunction2()
+        {
+        if(document.getElementById("fault_features6").style.display="none"){
+         document.getElementById("fault_features5").style.display="block";
+         document.getElementById("label5").style.display="block";
+         document.getElementById("button5").style.display="block";
+         }
+         document.getElementById("fault_features6").style.display="block";
+         document.getElementById("label6").style.display="block";
+         document.getElementById("button6").style.display="block";
+        };
+        function onclick5(){
+        document.getElementById("fault_features5").style.display="none";
+        document.getElementById("label5").style.display="none";
+        document.getElementById("button5").style.display="none";
+        }
+        function onclick6(){
+        document.getElementById("fault_features6").style.display="none";
+        document.getElementById("label6").style.display="none";
+        document.getElementById("button6").style.display="none";
+        }
+
+        </script>
+
+  </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,555 @@
+<html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <head>
+    <title>维修方案录入</title>
+        <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <script type="text/javascript" src="static/layui/layui.js"></script>
+  <link rel="stylesheet" href="static/layui/css/layui.css"  media="all">
+  </head>
+<body class="layui-layout-body">
+  <div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">故障录入与案例查询系统 </div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="/">主页</a></li>
+      <li class="layui-nav-item layui-this">
+        <a href="javascript:;">故障录入</a>
+        <dl class="layui-nav-child">
+          <dd><a href="single_fault">单故障录入</a></dd>
+          <dd><a href="batch_fault">批量故障录入</a></dd>
+          <dd><a href="flow">流程图录入</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item">
+        <a href="javascript:;">案例查询</a>
+        <dl class="layui-nav-child">
+          <dd><a href="precise_query">精确查询</a></dd>
+          <dd><a href="fuzz_query">模糊查询</a></dd>
+        </dl>
+      </li>
+        </li><li class="layui-nav-item">
+        <a href="map">知识地图</a>
+        </li>
+    </ul>
+  </div>
+
+     <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+          <li class="layui-nav-item layui-nav-itemed">
+           <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="single_fault">单故障录入</a>
+        </li>
+
+          <li class="layui-nav-item"><a href="batch_fault" >批量故障录入</a></li>
+          <li class="layui-nav-item layui-this"><a href="flow">流程图录入</a></li>
+          </li>
+               <li class="layui-nav-item">
+        <a href="map">知识地图</a>
+        </li>
+      </ul>
+          </li>
+            </ul>
+    </div>
+  </div>
+  <script type="text/javascript" src="/layui/layui.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+  <br>
+  <br>
+      <div class="layui-body">
+          <div style="padding: 15px;">
+    <center>
+      <h2>案例录入模块——流程图录入</h2>
+          <hr><br><br>
+
+            <br><br>
+        <div class="layui-upload">
+  <button type="button" class="layui-btn" id="test1">上传图片</button>
+  <div class="layui-upload-list">
+    <img class="layui-upload-img" id="demo1">
+    <p id="demoText"></p>
+  </div>
+                <form method="post" action="./flow_zhin">
+                <button name="re1"  class="layui-btn">识别</button>
+                </form>
+ </div>
+
+
+
+
+
+
+<script src="//res.layui.com/layui/dist/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+        <script src="//res.layui.com/layui/dist/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+
+layui.use('table', function(){
+  var table = layui.table;
+
+
+  //监听单元格编辑
+  table.on('edit(test3)', function(obj){
+    var value = obj.value //得到修改后的值
+    ,data = obj.data //得到所在行所有键值
+    ,field = obj.field; //得到字段
+    layer.msg('[ID: '+ data.id +'] ' + field + ' 字段更改为：'+ value);
+  });
+});
+</script>
+
+
+          <table>
+              <tr>
+                    <font style="font-size:24px">方案1 :</font>
+              </tr>
+              <tr>
+
+                  <td>
+                      故障特征1
+                  </td>
+
+                  <td>
+                       <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault11" type="text" value="{{a11}}">
+
+                  </td>
+                  <td>
+                     &nbsp;&nbsp;&nbsp;&nbsp;  方案特征1
+                  </td>
+                  <td>
+                       <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="solution1" type="text" value="{{b11}}">
+                  </td>
+
+
+              </tr>
+              <tr>
+                  <td>
+                      故障特征2
+                  </td>
+                  <td>
+                        <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault12" type="text" value="{{a12}}">
+
+                  </td>
+                  <td>
+                      &nbsp;&nbsp;&nbsp;&nbsp; 方案特征2
+                  </td>
+                  <td>
+                       <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="solution2" type="text" value="{{b12}}">
+                  </td>
+
+                  <tr>
+              <td>
+                  故障特征3
+              </td>
+              <td>
+                   <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault13" type="text" value="{{a13}}">
+              </td>
+              <td>
+                  &nbsp;&nbsp;&nbsp;&nbsp; 方案特征3
+              </td>
+              <td>
+                  <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="solution3" type="text" value="{{b13}}">
+              </td>
+          </tr>
+
+              </tr>
+          </table>
+            <br>
+            <br>
+            <br>
+
+            <table>
+                <tr>
+                    <center>
+                      <font style="font-size:24px">方案2 :</font>
+                  </center>
+                </tr>
+              <tr>
+                  <td>
+                      故障特征1
+                  </td>
+
+                  <td>
+                      <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault21" type="text" value="{{a21}}">
+                  </td>
+
+                  <td>
+                     &nbsp;&nbsp;&nbsp;&nbsp;  方案特征1
+                  </td>
+                  <td>
+                       <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="solution21" type="text" value="{{b21}}">
+                  </td>
+              </tr>
+                <tr>
+                    <td>
+                        故障特征2
+                    </td>
+                  <td>
+                     <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault22" type="text" value="{{a22}}">
+                  </td>
+                    <td>
+                       &nbsp;&nbsp;&nbsp;&nbsp;  方案特征2
+                    </td>
+                  <td>
+                       <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="solution22" type="text" value="{{b22}}">
+                  </td>
+
+
+              </tr>
+
+                <tr>
+                    <td>
+                        故障特征3
+                    </td>
+                    <td>
+                      <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault23" type="text" value="{{a23}}">
+                  </td>
+                    <td>
+                       &nbsp;&nbsp;&nbsp;&nbsp;  方案特征3
+                    </td>
+                    <td>
+                      <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="solution23" type="text" value="{{b23}}">
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                         故障特征4
+                    </td>
+                     <td>
+                     <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault24" type="text" value="{{a24}}">
+                  </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        故障特征5
+                    </td>
+                     <td>
+                      <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault25" type="text" value="{{a25}}">
+                  </td>
+                </tr>
+            </table>
+
+<br><br><br>
+
+                  <table>
+                      <tr>
+                          <center>
+                             <font style="font-size:24px"  >方案3 :</font>
+                          </center>
+                      </tr>
+                       <tr>
+                           <td>
+                               故障特征1
+                           </td>
+                  <td>
+                      <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault31" type="text" value="{{a31}}">
+                  </td>
+                           <td>
+                                 &nbsp;&nbsp;&nbsp;&nbsp;  方案特征1
+                           </td>
+                  <td>
+                      <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="solution31" type="text" value="{{b31}}">
+                  </td>
+              </tr>
+                      <tr>
+                          <td>
+                              故障特征2
+                          </td>
+                  <td>
+                       <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault32" type="text" value="{{a32}}">
+
+                  </td>
+                          <td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;  方案特征2
+                          </td>
+                  <td>
+                      <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="solution32" type="text" value="{{b32}}">
+                  </td>
+
+
+              </tr>
+                      <tr>
+                          <td>
+                              故障特征3
+                          </td>
+                          <td>
+                             <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault33" type="text" value="{{a33}}">
+                          </td>
+                          <td>
+                                 &nbsp;&nbsp;&nbsp;&nbsp;  方案特征3
+                          </td>
+                          <td>
+                              <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="solution33" type="text" value="{{b33}}">
+                          </td>
+
+                      </tr>
+                      <tr>
+                          <td>
+                              故障特征4
+                          </td>
+                          <td>
+                              <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault34" type="text" value="{{a34}}">
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              故障特征5
+                          </td>
+                          <td>
+                             <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault35" type="text" value="{{a35}}">
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                              故障特征6
+                          </td>
+                          <td>
+                             <input style="width:300px" lay-verify="title" autocomplete="off" class="layui-input" name="fault36" type="text" value="{{a36}}">
+                          </td>
+                      </tr>
+
+
+          </table>
+<center>
+    <form method="post" action="./flow_input">
+                        <button type="submit" class="layui-btn layui-btn-sm">录  入</button>
+    </form>
+</center>
+
+      </form>
+    </center>
+  <script src="//res.layui.com/layui/dist/layui.js" charset="utf-8"></script>
+
+
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+
+  //普通图片上传
+  var uploadInst = upload.render({
+    elem: '#test1'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#demo1').attr('src', result); //图片链接（base64）
+      });
+    }
+    ,done: function(res){
+      //如果上传失败
+      if(res.code > 0){
+        return layer.msg('上传失败');
+      }
+      //上传成功
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+  });
+
+  //多图片上传
+  upload.render({
+    elem: '#test2'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,multiple: true
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+      });
+    }
+    ,done: function(res){
+      //上传完毕
+    }
+  });
+
+  //指定允许上传的文件类型
+  upload.render({
+    elem: '#test3'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,accept: 'file' //普通文件
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res);
+    }
+  });
+  upload.render({ //允许上传的文件后缀
+    elem: '#test4'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,accept: 'file' //普通文件
+    ,exts: 'zip|rar|7z' //只允许上传压缩文件
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+  upload.render({
+    elem: '#test5'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,accept: 'video' //视频
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+  upload.render({
+    elem: '#test6'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,accept: 'audio' //音频
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+
+  //设定文件大小限制
+  upload.render({
+    elem: '#test7'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,size: 60 //限制文件大小，单位 KB
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+
+  //同时绑定多个元素，并将属性设定在元素上
+  upload.render({
+    elem: '.demoMore'
+    ,before: function(){
+      layer.tips('接口地址：'+ this.url, this.item, {tips: 1});
+    }
+    ,done: function(res, index, upload){
+      var item = this.item;
+      console.log(item); //获取当前触发上传的元素，layui 2.1.0 新增
+    }
+  })
+
+  //选完文件后不自动上传
+  upload.render({
+    elem: '#test8'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,auto: false
+    //,multiple: true
+    ,bindAction: '#test9'
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+
+  //拖拽上传
+  upload.render({
+    elem: '#test10'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,done: function(res){
+      layer.msg('上传成功');
+      layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);
+      console.log(res)
+    }
+  });
+
+  //多文件列表示例
+  var demoListView = $('#demoList')
+  ,uploadListIns = upload.render({
+    elem: '#testList'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,accept: 'file'
+    ,multiple: true
+    ,auto: false
+    ,bindAction: '#testListAction'
+    ,choose: function(obj){
+      var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+      //读取本地文件
+      obj.preview(function(index, file, result){
+        var tr = $(['<tr id="upload-'+ index +'">'
+          ,'<td>'+ file.name +'</td>'
+          ,'<td>'+ (file.size/1024).toFixed(1) +'kb</td>'
+          ,'<td>等待上传</td>'
+          ,'<td>'
+            ,'<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
+            ,'<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+          ,'</td>'
+        ,'</tr>'].join(''));
+
+        //单个重传
+        tr.find('.demo-reload').on('click', function(){
+          obj.upload(index, file);
+        });
+
+        //删除
+        tr.find('.demo-delete').on('click', function(){
+          delete files[index]; //删除对应的文件
+          tr.remove();
+          uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+        });
+
+        demoListView.append(tr);
+      });
+    }
+    ,done: function(res, index, upload){
+      if(res.files.file){ //上传成功
+        var tr = demoListView.find('tr#upload-'+ index)
+        ,tds = tr.children();
+        tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+        tds.eq(3).html(''); //清空操作
+        return delete this.files[index]; //删除文件队列已经上传成功的文件
+      }
+      this.error(index, upload);
+    }
+    ,error: function(index, upload){
+      var tr = demoListView.find('tr#upload-'+ index)
+      ,tds = tr.children();
+      tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+      tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+    }
+  });
+
+  //绑定原始文件域
+  upload.render({
+    elem: '#test20'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+
+});
+</script>
+
+
+    {% for msg in get_flashed_messages() %}
+<script>alert("{{ msg }}")</script>
+{% endfor %}
+          </div>
+      </div>
+  </div>
+  </body>
+</html>

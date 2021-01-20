@@ -1,0 +1,481 @@
+<html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <head>
+      <title>单故障录入</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <title>Title</title>
+      <meta name="renderer" content="webkit">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <script src="static/js/jquery.3.3.1.js"></script>
+      <script type="text/javascript" src="static/layui/layui.js"></script>
+      <script src="static/js/jquery-3.3.1.js"></script>
+      <link rel="stylesheet" href="static/layui/css/layui.css"  media="all">
+
+  </head>
+
+  <body>
+  <div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">故障录入与案例查询系统 </div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="/">主页</a></li>
+      <li class="layui-nav-item layui-this">
+        <a href="javascript:;">故障录入</a>
+        <dl class="layui-nav-child">
+          <dd><a href="single_fault">单故障录入</a></dd>
+          <dd><a href="batch_fault">批量故障录入</a></dd>
+          <dd><a href="flowchart">流程图录入</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item">
+        <a href="javascript:;">案例查询</a>
+        <dl class="layui-nav-child">
+          <dd><a href="precise_query">精确查询</a></dd>
+          <dd><a href="fuzz_query">模糊查询</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item">
+        <a href="map">知识地图</a>
+        </li>
+    </ul>
+  </div>
+
+     <!--<div class="layui-side layui-bg-black">-->
+    <!--<div class="layui-side-scroll">-->
+      <!--&lt;!&ndash; 左侧导航区域（可配合layui已有的垂直导航） &ndash;&gt;-->
+      <!--<ul class="layui-nav layui-nav-tree"  lay-filter="test">-->
+          <!--<li class="layui-nav-item layui-nav-itemed">-->
+           <!--<ul class="layui-nav layui-nav-tree"  lay-filter="test">-->
+        <!--<li class="layui-nav-item layui-nav-itemed">-->
+          <!--<a class="" href="single_fault">单故障录入</a>-->
+        <!--</li>-->
+
+          <!--<li class="layui-nav-item"><a href="batch_fault">批量故障录入</a></li>-->
+          <!--<li class="layui-nav-item"><a href="flowchart">流程图录入</a></li>-->
+          <!--</li>-->
+           <!--</ul>-->
+          <!--</li>-->
+      <!--</ul>-->
+
+
+    <!--</div>-->
+  <!--</div>-->
+  <script type="text/javascript" src="/layui/layui.js"></script>
+
+   <br>
+   <br>
+      <div >
+          <div style="padding: 15px;">
+    <center>
+      <h2>案例录入模块——单故障录入</h2>
+        <br>
+        <br>
+
+
+        <table>
+            <tr>
+                <td>
+         <div style=" text-align:center;">故障特征:</div> </td>
+                <td>
+                    <textarea name="maintenance_plan" rows="5"cols="90"  style="resize:none"></textarea>
+                </td>
+        </tr>
+        </table>
+        <br><br>
+
+        <table>
+            <tr>
+                <td>
+
+                    <button name="recognize" class="layui-btn layui-btn-sm" onclick="GetDescribe()" >智能识别</button>
+
+
+                    </td>
+
+            </tr>
+            </table>
+          <hr><br><br>
+        <div >
+                  <br>
+                  <table>
+              <tr>
+                  <td>
+                      车辆类型
+                  </td>
+
+                  <td>
+                       <input id="f1" name="f1" autocomplete="off" class="layui-input" type="text" value="" required="required"  onblur="checkPassword()" onkeyup="checkPassword()">
+                        <span id="span_password1"></span>
+                  </td>
+                  <td>
+                      <p  hidden="hidden">特征增加</p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                  </td>
+
+                  <td>
+                      型号
+                  </td>
+                  <td>
+                       <input id="f2" name="f2" autocomplete="off" class="layui-input" type="text" value="" required="required"  onblur="checkPassword()" onkeyup="checkPassword()">
+                        <span id="span_password2"></span>
+                  </td>
+                  <td>
+                      <p  hidden="hidden"  >特征增加</p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  </td>
+              <tr>
+
+                  <td>
+                     <label>温度</label>
+                  </td>
+                  <td>
+                       <input id="f3" name="f3" autocomplete="off" class="layui-input" type="text" value="" required="required"  onblur="checkPassword()" onkeyup="checkPassword()">
+                        <span id="span_password3"></span>
+                  </td>
+                      <td>
+                     <label>℃</label>
+                  </td>
+
+
+                  <td>
+                      <label id="label" >湿度</label>
+                  </td>
+                  <td>
+                       <input  id="f4" autocomplete="off" name="f4" class="layui-input" type="text" value="" required="required"  onblur="checkPassword()" onkeyup="checkPassword()">
+                        <span id="span_password4"></span>
+                  </td>
+                  <td>
+                      <label>%</label>
+                  </td>
+
+                  </tr>
+                      <tr>
+
+                  <td>
+                     <label>气压</label>
+                  </td>
+                  <td>
+                       <input id="f5" name="f5" autocomplete="off" class="layui-input" type="text" value="" required="required"  onblur="checkPassword()" onkeyup="checkPassword()">
+                        <span id="span_password5"></span>
+                  </td>
+                  <td>
+                      <label>hpa</label>
+                  </td>
+
+                  <td>
+                      <label id="label5" >海拔</label>
+                  </td>
+                  <td>
+                       <input id="f6" autocomplete="off" name="f6" class="layui-input" type="text" value="" required="required"  onblur="checkPassword()" onkeyup="checkPassword()">
+                        <span id="span_password6"></span>
+                  </td>
+                  <td>
+                      <label>m</label>
+                  </td>
+
+                  </tr>
+                      <tr>
+
+                  <td>
+                     <label>盐度</label>
+                  </td>
+                  <td>
+                       <input  id="f7" name="f7" autocomplete="off" class="layui-input" type="text" value="" required="required"  onblur="checkPassword()" onkeyup="checkPassword()">
+                        <span id="span_password7"></span>
+                  </td>
+                  <td>
+                      <label>ppm</label>
+                  </td>
+
+                  <td>
+                      <label  >昼夜温差</label>
+                  </td>
+                  <td>
+                       <input  id="f8" autocomplete="off" name="f8" class="layui-input" type="text" value="" required="required"  onblur="checkPassword()" onkeyup="checkPassword()">
+                        <span id="span_password8"></span>
+                  </td>
+                  <td>
+                      <label>℃</label>
+                  </td>
+
+                  </tr>
+                  </table>
+
+              <tr>
+                   <table ></table>
+              </tr>
+              <br><br><br>
+
+
+          </table>
+
+
+        <table id="filearea"></table>
+
+
+
+    {% for msg in get_flashed_messages() %}
+        <script>alert("{{ msg }}")</script>
+    {% endfor %}
+
+
+
+              <br><br>
+<!--<a href="single_solution" >下一步：解决方案录入</a><br><br>-->
+
+    </center>
+
+
+
+  </div>
+      </div>
+  </div>
+
+  <script>
+      function checkPassword(){
+      var uPass1 = document.getElementById("f1").value.trim();
+        var span1 = document.getElementById("span_password1");
+        var uPass2 = document.getElementById("f2").value.trim();
+        var span2= document.getElementById("span_password2");
+        var uPass3 = document.getElementById("f3").value.trim();
+        var span3= document.getElementById("span_password3");
+        var uPass4 = document.getElementById("f4").value.trim();
+        var span4 = document.getElementById("span_password4");
+        var uPass5 = document.getElementById("f5").value.trim();
+        var span5 = document.getElementById("span_password5");
+        var uPass6 = document.getElementById("f6").value.trim();
+        var span6 = document.getElementById("span_password6");
+        var uPass7 = document.getElementById("f7").value.trim();
+        var span7 = document.getElementById("span_password7");
+        var uPass8 = document.getElementById("f8").value.trim();
+        var span8 = document.getElementById("span_password8");
+        if(uPass1.length == 0){
+            span1.innerHTML = "<font color='red' size='2'>不能为空</font>";
+            return false;
+        }else{
+        $("#span_password1").html("");
+        }
+        if(uPass2.length == 0){
+            span2.innerHTML = "<font color='red' size='2'>不能为空</font>";
+            return false;
+        }else{
+        $("#span_password2").html("");
+        }
+        if(uPass3.length == 0){
+            span3.innerHTML = "<font color='red' size='2'>不能为空</font>";
+            return false;
+        }else{
+        $("#span_password3").html("");
+        }
+        if(uPass4.length == 0){
+            span4.innerHTML = "<font color='red' size='2'>不能为空</font>";
+            return false;
+        }else{
+        $("#span_password4").html("");
+        }
+        if(uPass5.length == 0){
+            span5.innerHTML = "<font color='red' size='2'>不能为空</font>";
+            return false;
+        }else{
+        $("#span_password5").html("");
+        }
+        if(uPass6.length == 0){
+            span6.innerHTML = "<font color='red' size='2'>不能为空</font>";
+            return false;
+        }else{
+        $("#span_password6").html("");
+        }
+        if(uPass7.length == 0){
+            span7.innerHTML = "<font color='red' size='2'>不能为空</font>";
+            return false;
+        }else{
+        $("#span_password7").html("");
+        }
+        if(uPass8.length == 0){
+            span8.innerHTML = "<font color='red' size='2'>不能为空</font>";
+            return false;
+        }else{
+        $("#span_password8").html("");
+        }
+      if(uPass1.length!=0&&uPass2.length != 0&&uPass3.length!=0&&uPass4.length!=0&&uPass5.length!=0&&uPass6.length != 0&&uPass7.length!=0&&uPass8.length!=0){
+      document.getElementById("luru").disabled=false;
+      console.log("测试");
+      }else{
+
+
+        }
+    }
+    </script>
+
+  <script>
+
+  function GetDescribe(){
+  var maintenance_plan=$("textarea[name='maintenance_plan']").val();
+   $.post('/zhin',
+     {'maintenance_plan':maintenance_plan},
+      function (data) {
+      jsondata=JSON.parse(data)//把获取到的json数据解析出来
+      var list_num=jsondata.list_five_num;
+      var list=jsondata.list_five;
+      var weather=jsondata.weather;
+      var two=jsondata.two;
+      console.log("weather",weather);
+      console.log("two",two);
+
+      document.getElementById('f3').value=weather[0][0];
+      document.getElementById('f8').value=weather[0][1];
+      document.getElementById('f4').value=weather[1];
+      document.getElementById('f5').value=weather[2];
+      document.getElementById('f6').value=weather[3];
+      document.getElementById('f7').value=weather[4];
+      document.getElementById('f1').value=two[0];
+      document.getElementById('f2').value=two[1];
+
+      $("#filearea").html("");
+      if(list_num>10){
+      for(var i=0;i<10;i++){
+       var cnt=i+1;
+        var obj=document.getElementById('filearea');
+        var row=obj.insertRow(-1);
+        var c0=row.insertCell(0);
+        c0.innerHTML='<div><label class="head" style="font-size:14px;">故障特征'+cnt+'</label> &nbsp;&nbsp;&nbsp; ';
+        var c1=row.insertCell(1);
+        c1.innerHTML='<input id="input'+cnt+'" type=text style="width:600px" name="Program_features'+cnt+'" lay-verify="title" autocomplete="off" class="layui-input" style="margin-left:1px;" value="'+list[i]+'">';
+        var row1=obj.insertRow(-1);
+        var c00=row1.insertCell(0);
+        c00.innerHTML=' <p style="font-size:20px;visibility:hidden;" >1</p>';
+        }
+        var obj=document.getElementById('filearea');
+        var row=obj.insertRow(-1);
+        var c1=row.insertCell(0);
+        var c2=row.insertCell(1);
+
+        c2.innerHTML='<center><button id="luru" disabled="disabled"  class="layui-btn layui-btn-sm"  onclick="save()">录 入</button></center>';
+      }else{
+      for(var i=0;i<list_num;i++){
+        var cnt=i+1;
+        var obj=document.getElementById('filearea');
+        var row=obj.insertRow(-1);
+        var c0=row.insertCell(0);
+        c0.innerHTML='<div><label class="head" style="font-size:14px;">故障特征'+cnt+'</label> &nbsp;&nbsp;&nbsp; ';
+        var c1=row.insertCell(1);
+        c1.innerHTML='<input id="input'+cnt+'" type=text style="width:600px" name="Program_features'+cnt+'" lay-verify="title" autocomplete="off" class="layui-input" style="margin-left:1px;" value="'+list[i]+'">';
+        var row1=obj.insertRow(-1);
+        var c00=row1.insertCell(0);
+        c00.innerHTML=' <p style="font-size:20px;visibility:hidden;" >1</p>';
+      }
+      var obj=document.getElementById('filearea');
+      var row=obj.insertRow(-1);
+      var c1=row.insertCell(0);
+      var c2=row.insertCell(1);
+      c2.innerHTML='<center><button id="luru" disabled="disabled" class="layui-btn layui-btn-sm"  onclick="save()">录 入</button></center>';
+      <!--c1.innerHTML='<table><tr><td><a  class="layui-btn layui-btn-sm" href="single_solution">录 入1</a></td></tr></table>';-->
+      }
+
+      }
+
+      )}
+
+
+
+/*
+ * 显示loading遮罩层
+ */
+function loading() {
+    console.log("start");
+    var mask_bg = document.createElement("div");
+    mask_bg.id = "mask_bg";
+    mask_bg.style.position = "absolute";
+    mask_bg.style.top = "0px";
+    mask_bg.style.left = "0px";
+    mask_bg.style.width = "100%";
+    mask_bg.style.height = "1000px";
+    mask_bg.style.backgroundColor = "#777";
+    mask_bg.style.opacity = 0.6;
+    mask_bg.style.zIndex = 10001;
+    document.body.appendChild(mask_bg);
+
+    var mask_msg = document.createElement("div");
+    mask_msg.style.position = "absolute";
+    mask_msg.style.top = "35%";
+    mask_msg.style.left = "42%";
+    mask_msg.style.backgroundColor = "white";
+    mask_msg.style.border = "#336699 1px solid";
+    mask_msg.style.textAlign = "center";
+    mask_msg.style.fontSize = "1.1em";
+    mask_msg.style.fontWeight = "bold";
+    mask_msg.style.padding = "0.5em 3em 0.5em 3em";
+    mask_msg.style.zIndex = 10002;
+    mask_msg.innerText = "正在执行,请稍后...";
+    mask_bg.appendChild(mask_msg);
+}
+/*
+ * 关闭遮罩层
+ */
+function loaded() {
+    console.log("end")
+    var mask_bg = document.getElementById("mask_bg");
+    if (mask_bg != null)
+        mask_bg.parentNode.removeChild(mask_bg);
+}
+
+function save(){
+  var arr=[];
+  var Program_features1=$("input[name='Program_features1']").val();
+  var Program_features2=$("input[name='Program_features2']").val();
+  var Program_features3=$("input[name='Program_features3']").val();
+  var Program_features4=$("input[name='Program_features4']").val();
+  var Program_features5=$("input[name='Program_features5']").val();
+  var Program_features6=$("input[name='Program_features6']").val();
+  var Program_features7=$("input[name='Program_features7']").val();
+  var Program_features8=$("input[name='Program_features8']").val();
+  var Program_features9=$("input[name='Program_features9']").val();
+  var Program_features10=$("input[name='Program_features10']").val();
+  var weather1=$("input[name='f1']").val();
+  var weather2=$("input[name='f2']").val();
+  var weather3=$("input[name='f3']").val();
+  var weather4=$("input[name='f4']").val();
+  var weather5=$("input[name='f5']").val();
+  var weather6=$("input[name='f6']").val();
+  var weather7=$("input[name='f7']").val();
+  var weather8=$("input[name='f8']").val();
+console.log("save begin");
+loading();
+   $.post('/input_fault',
+         {'Program_features1':Program_features1,'Program_features2':Program_features2,
+         'Program_features3':Program_features3,'Program_features4':Program_features4,
+         'Program_features5':Program_features5,'Program_features6':Program_features6,
+         'Program_features7':Program_features7,'Program_features8':Program_features8,
+         'Program_features9':Program_features9,'Program_features10':Program_features10,
+         'weather1':weather1,'weather2':weather2,'weather3':weather3,'weather4':weather4,
+         'weather5':weather5,'weather6':weather6,'weather7':weather7,'weather8':weather8,
+
+         },
+          function () {
+
+                console.log("******");
+                loaded();
+                window.location.href="single_solution";
+                alert("录入成功");
+
+                })
+          console.log("save end")
+          <!--window.location.href="single_solution.html";-->
+
+
+}
+
+  </script>
+
+
+
+  <script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+
+});
+</script>
+
+  </body>
+</html>

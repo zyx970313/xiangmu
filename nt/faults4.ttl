@@ -1,0 +1,68 @@
+@prefix map: <#> .
+@prefix db: <> .
+@prefix vocab: <vocab/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix d2rq: <http://www.wiwiss.fu-berlin.de/suhl/bizer/D2RQ/0.1#> .
+@prefix jdbc: <http://d2rq.org/terms/jdbc/> .
+@prefix : <http://www.kgdemo.com#> .
+
+map:database a d2rq:Database;
+	d2rq:jdbcDriver "com.mysql.jdbc.Driver";
+	d2rq:jdbcDSN "jdbc:mysql:///faults_test";
+	d2rq:username "root";
+	d2rq:password "zhangyixin";
+	jdbc:autoReconnect "true";
+	jdbc:zeroDateTimeBehavior "convertToNull";
+	.
+
+# Table fea2sol (n:m)
+map:fea2sol__link a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:features;
+	d2rq:property :fea2sol;
+	d2rq:refersToClassMap map:sol_features;
+	d2rq:join "fea2sol.sol_features_id => sol_features.sol_features_id";
+	d2rq:join "fea2sol.features_id => features.features_id";
+	.
+
+# Table features
+map:features a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "features/@@features.features_id@@";
+	d2rq:class :Features;
+	d2rq:classDefinitionLabel "features";
+	.
+map:features_features a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:features;
+	d2rq:property :features;
+	d2rq:propertyDefinitionLabel "features features";
+	d2rq:column "features.features";
+	.
+map:features_group_id a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:features;
+	d2rq:property :group_id;
+	d2rq:propertyDefinitionLabel "features group_id";
+	d2rq:column "features.group_id";
+	.
+
+# Table sol_features
+map:sol_features a d2rq:ClassMap;
+	d2rq:dataStorage map:database;
+	d2rq:uriPattern "sol_features/@@sol_features.sol_features_id@@";
+	d2rq:class :Sol_features;
+	d2rq:classDefinitionLabel "sol_features";
+	.
+map:sol_features_sol_features a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:sol_features;
+	d2rq:property :sol_features;
+	d2rq:propertyDefinitionLabel "sol_features sol_features";
+	d2rq:column "sol_features.sol_features";
+	.
+map:sol_features_group_id a d2rq:PropertyBridge;
+	d2rq:belongsToClassMap map:sol_features;
+	d2rq:property :sol_group_id;
+	d2rq:propertyDefinitionLabel "sol_features group_id";
+	d2rq:column "sol_features.group_id";
+	.
+

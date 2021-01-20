@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模糊查询</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="static/layui/layui.js"></script>
+    <link rel="stylesheet" href="static/layui/css/layui.css"  media="all">
+     <script src="static/js/echarts.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="static/js/jquery-3.3.1.js"></script>
+</head>
+<style>
+.link {  fill: none;  stroke: #666;  stroke-width: 1.5px;}#licensing {  fill: green;}.link.licensing {  stroke: green;}.link.resolved {  stroke-dasharray: 0,2 1;}circle {  fill: #ccc;  stroke: #333;  stroke-width: 1.5px;}text {  font: 12px Microsoft YaHei;  pointer-events: none;  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;}.linetext {    font-size: 12px Microsoft YaHei;}
+.link {  fill: none;  stroke: #666;  stroke-width: 1.5px;}#licensing {  fill: green;}.link.licensing {  stroke: green;}.link.resolved {  stroke-dasharray: 0,2 1;}circle {  fill: #ccc;  stroke: #333;  stroke-width: 1.5px;}text {  font: 12px Microsoft YaHei;  pointer-events: none;  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, 0 -1px 0 #fff, -1px 0 0 #fff;}.linetext {    font-size: 12px Microsoft YaHei;}
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+button {
+  padding: 10px 20px;
+}
+ .option{
+
+    height:37px;
+    width:120px;
+    line-height:30px;
+    border:1px solid 	#DCDCDC;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+    }</style>
+<iframe id="fraSubmit" name="fraSubmit" style="display:none;" scrolling="yes" noresize src="about:blank" ></iframe>
+  <body>
+  <div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">故障录入与案例查询系统 </div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="/">主页</a></li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">故障录入</a>
+        <dl class="layui-nav-child">
+          <dd><a href="single_fault">单故障录入</a></dd>
+          <dd><a href="batch_fault">批量故障录入</a></dd>
+          <dd><a href="flowchart">流程图录入</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item layui-this">
+        <a href="javascript:;">案例查询</a>
+        <dl class="layui-nav-child">
+          <dd><a href="precise_query">精确查询</a></dd>
+          <dd><a href="fuzz_query">模糊查询</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item">
+        <a href="map">知识地图</a>
+        </li>
+    </ul>
+  </div>
+<style>
+.progress{
+  width: 700px;
+  height: 40px;
+}
+input[type=range] {/*input外壳样式*/
+    -webkit-appearance: none;
+    border-radius: 30px;
+    height: 15px;
+    z-index: 10;
+}
+input[type=range]::-webkit-slider-runnable-track {/*轨道*/
+    height: 15px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+input[type=range]::-webkit-slider-thumb {/*滑块*/
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    background: #fff !important;
+    border-radius: 50%;
+    border: solid 1px #ddd; /*设置边框*/
+ }
+
+</style>
+
+<script type="text/javascript" src="/layui/layui.js"></script>
+
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+<br>
+<br>
+
+<center>
+      <h2>案例查询模块——模糊查询</h2>
+      <!--<form method="post" action="./submit_fuzz" >-->
+          <br>
+    <table>
+            <tr>
+                <td>
+         <div style=" text-align:center;">故障描述:</div> </td>
+                <td>
+                    <textarea name="maintenance_plan" rows="5"cols="138"  style="resize:none"></textarea>
+                </td>
+        </tr>
+        </table>
+        <br><br>
+
+        <table>
+            <tr>
+                <td>
+
+                    <button name="recognize" class="layui-btn layui-btn-sm" onclick="GetDescribe()" >智能识别</button>
+                    </td>
+
+            </tr>
+            </table>
+    <br>
+    <br>
+
+          <table>
+              <tr>
+                  <td>
+                      车辆类型
+                  </td>
+
+                  <td>
+                       <input id="f1" name="weather1" autocomplete="off" class="layui-input" type="text" value="">
+                  </td>
+                  <!--<td>-->
+                      <!--<p  hidden="hidden">特征增加</p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;-->
+                  <!--</td>-->
+
+                  <td>
+                      型号
+                  </td>
+                  <td>
+                       <input id="f2" name="weather2" autocomplete="off" class="layui-input" type="text" value="">
+                  </td>
+                  <!--<td>-->
+                      <!--<p  hidden="hidden"  >特征增加</p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;-->
+                  <!--</td>-->
+
+
+                  <td>
+                     <label>温度</label>
+                  </td>
+                  <td>
+                       <input id="f3" name="weather3" autocomplete="off" class="layui-input" type="text" value="">
+                  </td>
+                      <!--<td>-->
+                     <!--<label>℃</label>-->
+                  <!--</td>-->
+
+
+                  <td>
+                      <label id="label" >湿度</label>
+                  </td>
+                  <td>
+                       <input  id="f4" autocomplete="off" name="weather4" class="layui-input" type="text" value="">
+                  </td>
+                  <!--<td>-->
+                      <!--<label>%</label>-->
+                  <!--</td>-->
+
+                  </tr>
+                      <tr>
+
+                  <td>
+                     <label>气压</label>
+                  </td>
+                  <td>
+                       <input id="f5" name="weather5" autocomplete="off" class="layui-input" type="text" value="">
+                  </td>
+                  <!--<td>-->
+                      <!--<label>hpa</label>-->
+                  <!--</td>-->
+
+                  <td>
+                      <label id="label5" >海拔</label>
+                  </td>
+                  <td>
+                       <input id="f6"  autocomplete="off" name="weather6" class="layui-input" type="text" value="">
+                  </td>
+                  <!--<td>-->
+                      <!--<label>m</label>-->
+                  <!--</td>-->
+
+
+                  <td>
+                     <label>盐度</label>
+                  </td>
+                  <td>
+                       <input id="f7" name="weather7" autocomplete="off" class="layui-input" type="text" value="">
+                  </td>
+                  <!--<td>-->
+                      <!--<label>ppm</label>-->
+                  <!--</td>-->
+
+                  <td>
+                      <label  >昼夜温差</label>
+                  </td>
+                  <td>
+                       <input id="f8" autocomplete="off" name="weather8" class="layui-input" type="text" value="">
+                  </td>
+                  <!--<td>-->
+                      <!--<label>℃</label>-->
+                  <!--</td>-->
+
+                  </tr>
+              <tr>
+                  <td>
+                      故障特征1
+                  </td>
+
+                  <td>
+                       <input id="fault_features1" name="fault_features1" class="layui-input" type="text" value="{{a}}">
+                  </td>
+
+
+
+
+                  <td>
+                      故障特征2
+                  </td>
+                  <td>
+                       <input id="fault_features2" name="fault_features2" class="layui-input" type="text" value="{{b}}">
+                  </td>
+
+
+                  <td>
+                      故障特征3
+                  </td>
+                  <td>
+                      <input id="fault_features3" name="fault_features3" class="layui-input" type="text" value="{{c}}">
+                  </td>
+
+
+                  <td>
+                      故障特征4
+                  </td>
+                  <td>
+                      <input id="fault_features4" name="fault_features4" class="layui-input" type="text" value="{{d}}">
+                  </td>
+
+
+
+              </tr>
+
+              <tr>
+
+                  <td>
+                     <label>故障特征5</label>
+                  </td>
+                  <td>
+                       <input id="fault_features5" name="fault_features5" class="layui-input" type="text" value="">
+                  </td>
+
+
+                  <td>
+                      <label >故障特征6</label>
+                  </td>
+                  <td>
+                       <input  id="fault_features6" name="fault_features6" class="layui-input" type="text" value="">
+                  </td>
+
+
+                  <td>
+                      <label>故障特征7</label>
+                  </td>
+                  <td>
+                       <input id="fault_features7" name="fault_features7" class="layui-input" type="text" value="">
+                  </td>
+
+
+               <td>
+                      <label>故障特征8</label>
+                  </td>
+                  <td>
+                       <input id="fault_features8" name="fault_features8" class="layui-input" type="text" value="">
+                  </td>
+              </tr>
+              <tr>
+                   <td>
+                      <label>故障特征9</label>
+                  </td>
+                  <td>
+                       <input id="fault_features9" name="fault_features9" class="layui-input" type="text" value="">
+                  </td>
+                   <td>
+                      <label>故障特征10</label>
+                  </td>
+                  <td>
+                       <input id="fault_features10" name="fault_features10" class="layui-input" type="text" value="">
+                  </td>
+              </tr>
+
+
+
+          </table>
+          <br>
+          <br>
+
+          <table>
+            <tr>
+
+                <td>
+                        <div >
+                          <label class="layui-form-label">查询数量</label>
+                        </div>
+                </td>
+                <td>
+                          <div >
+
+                            <select id="option" class="option" name="modules" lay-verify="required" lay-search="">
+                                <option value="1" >1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+
+        </select>
+      </div>
+                </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td>
+                    <button id="button_search"class="layui-btn layui-btn-sm" onclick="getValue()" >模糊查询推理</button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td>
+                    <button id="exc"class="layui-btn layui-btn-sm" onclick="output()" >导出</button>
+
+                </td>
+            </tr>
+            </table>
+<br>
+          <br>
+
+    <table id="desc_text"></table>
+
+
+      <!--<center>-->
+      <!--<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;width:900px;">-->
+  <!--<legend>请选择查询案例数量</legend>-->
+<!--</fieldset>-->
+          <!--<div class="range1" id="app">-->
+<!--<input id="processRange" name="processRange" class="progress" type="range" value="0" oninput="change()" onchange="change()" max ="duration" min ="0" @input = "changeProcess();" style="width: 900px;" :style="{background: '-webkit-linear-gradient(top, #32CD32, #32CD32) 0% 0% / '+ processPoint*100/duration +'% 100% no-repeat'}">-->
+<!--<span class="range2" id="value">0</span>-->
+               <!--<button type="button" class="layui-btn layui-btn-sm"  onclick="getValue()">确定</button>-->
+          <!--</div>-->
+
+          <!--</center>-->
+          <br>
+          <br>
+          <br>
+
+
+<!--</center>-->
+<!--</form>-->
+</body>
+</html>
+
+<script>
+
+    function GetDescribe(){
+  var maintenance_plan=$("textarea[name='maintenance_plan']").val();
+   $.post('/zhin_query',
+     {'maintenance_plan':maintenance_plan},
+      function (data) {
+      jsondata=JSON.parse(data)//把获取到的json数据解析出来
+      console.log("jsondata",jsondata);
+      var list_num=jsondata.list_five_num;
+      var list=jsondata.list_five;
+      console.log("list",list);
+      var weather=jsondata.weather;
+      var two=jsondata.two;
+      console.log("weather",weather);
+      console.log("two",two);
+
+      document.getElementById('f3').value=weather[0][0];
+      document.getElementById('f8').value=weather[0][1];
+      document.getElementById('f4').value=weather[1];
+      document.getElementById('f5').value=weather[2];
+      document.getElementById('f6').value=weather[3];
+      document.getElementById('f7').value=weather[4];
+      document.getElementById('f1').value=two[0];
+      document.getElementById('f2').value=two[1];
+      for(var i=0;i<list_num;i++){
+        var n='fault_features'+(i+1).toString();
+        document.getElementById(n).value=list[i];
+      }
+
+
+
+      }
+      )
+      }
+
+    function output(){
+        $.post('/output_fuzz',{},function (data) {
+        console.log("success");
+        alert("导出成功");
+    }
+    )
+    }
+
+    function getValue(){
+    var myselect=document.getElementById("option");
+    var fault_features1=$("input[name='fault_features1']").val();
+    var fault_features2=$("input[name='fault_features2']").val();
+    var fault_features3=$("input[name='fault_features3']").val();
+    var fault_features4=$("input[name='fault_features4']").val();
+    var fault_features5=$("input[name='fault_features5']").val();
+    var fault_features6=$("input[name='fault_features6']").val();
+    var fault_features7=$("input[name='fault_features7']").val();
+    var fault_features8=$("input[name='fault_features8']").val();
+    var fault_features9=$("input[name='fault_features9']").val();
+    var fault_features10=$("input[name='fault_features10']").val();
+    var weather1=$("input[name='weather1']").val();
+    var weather2=$("input[name='weather2']").val();
+    var weather3=$("input[name='weather3']").val();
+    var weather4=$("input[name='weather4']").val();
+    var weather5=$("input[name='weather5']").val();
+    var weather6=$("input[name='weather6']").val();
+    var weather7=$("input[name='weather7']").val();
+    var weather8=$("input[name='weather8']").val();
+
+    var index=myselect.selectedIndex ; // selectedIndex代表的是你所选中项的index
+    var v1=myselect.options[index].value;
+
+    $.post('/submit_fuzz',
+         {'v1':v1,'fault_features1':fault_features1,'fault_features2':fault_features2,
+         'fault_features3':fault_features3,'fault_features4':fault_features4,'fault_features5':fault_features5,
+         'fault_features6':fault_features6,'fault_features7':fault_features7,'fault_features8':fault_features8,
+         'fault_features9':fault_features9,'fault_features10':fault_features10,
+         'weather1':weather1,'weather2':weather2,'weather3':weather3,'weather4':weather4,
+         'weather5':weather5,'weather6':weather6,'weather7':weather7,'weather8':weather8,
+         },
+          function (data) {
+          window.location.reload();
+                })
+    }
+
+    function flash(){
+     window.location.reload();
+    }
+</script>
+
+
+
+<div id="main" style="width:1200px;height:1000px"></div>
+<script type="text/javascript">
+
+    $.get('/fuzzData').done(function (data) {
+            jsondata=JSON.parse(data)//把获取到的json数据解析出来
+            console.log("test: ", jsondata);
+            $("#desc_text").html("");
+            var cnt=i+1;
+            var obj=document.getElementById('desc_text');
+            <!--var row=obj.insertRow(-1);-->
+            <!--var c0=row.insertCell(0);-->
+            console.log("desc_text",jsondata.desc_text);
+            for(var i=0;i<jsondata.desc_text.length;i++){
+            var row=obj.insertRow(-1);
+            row.innerHTML='<label style="font-size:13px;">'+jsondata.desc_text[i]+'</label> ';
+            }
+            var list = [];
+            for(var i = 0; i < jsondata.list.length; i++) {
+                if(list.length == 0) {
+                    list.push(jsondata.list[i]);
+                } else {
+                    var flag = true;
+                    var len = list.length;
+                    for(var j = 0; j < len; j++) {
+                        if(list[j].name == jsondata.list[i].name) {
+                            flag = false;
+                            break;
+                        }
+                    }
+                    if(flag) {
+                        list.push(jsondata.list[i]);
+                    }
+                }
+            }
+            console.log("list: ", list);
+            var myChart = echarts.init(document.getElementById('main'));
+            var categories = [];
+            <!--for (var i = 0; i < 3; i++) {-->
+                <!--categories[i] = {-->
+                    <!--name: '案例' + i-->
+                <!--};-->
+            <!--}-->
+            categories[0]={ name:''};
+            categories[1]={ name:'故障特征'};
+            categories[2]={ name:'解决方案特征'};
+
+            option = {
+                // 图的标题
+                title: {
+                    text: ''
+                },
+                // 提示框的配置
+                tooltip: {
+                    enterable: true,
+                    formatter: function (x) {
+                        var str = "";
+                        var i = 0;
+                        while(i < x.data.des.length) {
+                            str += x.data.des.substring(i, i+15)+'<br>';
+                            i += 15;
+                        }
+                        str += x.data.des.substring(i, x.data.des.length);
+                        return str;
+                    }
+                },
+                // 工具箱
+                toolbox: {
+                    // 显示工具箱
+                    show: true,
+                    feature: {
+                        mark: {
+                            show: true
+                        },
+                        // 还原
+                        restore: {
+                            show: true
+                        },
+                        // 保存为图片
+                        saveAsImage: {
+                            show: true
+                        }
+                    }
+                },
+                legend: [{
+                    // selectedMode: 'single',
+                    data: categories.map(function (a) {
+                        return a.name;
+                    })
+                }],
+                series: [{
+                    type: 'graph', // 类型:关系图
+                    layout: 'force', //图的布局，类型为力导图
+                    symbolSize: 20, // 调整节点的大小
+                    roam: true, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+                    edgeSymbol: ['circle', 'arrow'],
+                    edgeSymbolSize: [2, 10],
+                    edgeLabel: {
+                        normal: {
+                            textStyle: {
+                                fontSize: 8
+                            }
+                        }
+                    },
+                    force: {
+                        repulsion: 800,
+                        edgeLength: [5, 15]
+                    },
+                    draggable: true,
+                    focusNodeAdjacency: true,
+                    lineStyle: {
+                        normal: {
+                            width: 2,
+                            color: '#4b565b',
+                        }
+                    },
+                    edgeLabel: {
+                        normal: {
+                            show: true,
+                            formatter: function (x) {
+                                return x.data.name;
+                            }
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            textStyle: {}
+                        }
+                    },
+
+                    // 数据
+                    data:list,
+                    links:jsondata.links,
+                    categories: categories,
+                }]
+            };
+            myChart.setOption(option);
+    });
+
+
+
+</script>

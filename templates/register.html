@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+        <script type="text/javascript" src="static/layui/layui.js"></script>
+    <link rel="stylesheet" href="static/layui/css/layui.css"  media="all">
+
+
+    <style type="text/css">
+        a{ text-decoration:none;  }
+    </style>
+</head>
+
+<body background="../static/bg2.png" backgroundsize="50%" style=" background-repeat:no-repeat ;background-size:100% 100%;
+background-attachment: fixed;">
+<style type="text/css">
+
+a.two:link {font-size:20px;
+color: #000000}
+a.two:visited {color: #000000}
+a.two:hover {font-size: 150%}
+
+</style>
+
+
+
+<center>
+<br>
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<h1>&nbsp; &nbsp;&nbsp; 注 册 账 号</h1>
+<br>
+
+<br>
+<br>
+    <form method="post" action="./register" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>
+                用户名：
+            </td>
+            <td>
+                <input class="layui-input"  type="text" id="uname" name="uname" >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p style="font-size:20px;visibility:hidden;" >1</p>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                密码：
+            </td>
+        <td>
+
+<div class="item">
+            <p class="p_row"><input class="layui-input" value=""  type="password" id="upwd" name="upwd" required="required"  onblur="checkPassword()" onkeyup="checkPassword()"></p>
+            <span id="span_password"></span>
+</div>
+
+        </td>
+        <tr>
+        <td>
+             <p style="font-size:20px;visibility:hidden;" >1</p>
+        </td>
+    </tr>
+        <tr>
+            <td>
+                确认密码：
+            </td>
+        <td>
+
+<div class="item">
+            <p class="p_row"> <input class="layui-input" value=""  type="password" id="upwd1" name="upwd1" required="required" onblur="checkRePassword()" onkeyup="checkRePassword()"></p>
+            <span id="span_repassword"></span>
+</div>
+        </td>
+        <tr>
+        <td>
+             <p style="font-size:20px;visibility:hidden;" >1</p>
+        </td>
+    </tr>
+
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <button class="layui-btn layui-btn-sm" type="submit">确定</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="layui-btn layui-btn-sm" type="submit" href="/" >返回</a>
+            </td>
+
+        </tr>
+    </table>
+</form>
+    {% for msg in get_flashed_messages(category_filter=["error"]): %}
+<script>alert("{{ msg }}")</script>
+{% endfor %}
+
+        {% for msg in get_flashed_messages(category_filter=["ok"]): %}
+<script>alert("{{ msg }}")</script>
+{% endfor %}
+<script>
+     /*
+     密码校验
+     */
+    function checkPassword(){
+        //获取密码输入
+        var uPass = document.getElementById("upwd").value.trim();
+        var span = document.getElementById("span_password");
+        //对密码输入进行校验
+        if(uPass.length == 0){
+            span.innerHTML = "<font color='red' size='2'>密码不能为空</font>";
+            return false;
+        }else if(uPass.length < 3 && uPass.length > 0){
+            span.innerHTML = "<font color='red' size='2'>密码太短</font>";
+            return false;
+        }
+        else{
+            span.innerHTML = "<font color='green' size='2'>√,密码可用</font>";
+            return true;
+        }
+    }
+
+    /*
+     确认密码校验
+     * */
+    function checkRePassword(){
+        //获取密码输入
+        var uPass = document.getElementById("upwd").value.trim();
+        //获取确认密码输入
+        var uRePass = document.getElementById("upwd1").value.trim();
+        var span = document.getElementById("span_repassword");
+        //对密码输入进行校验
+        if(uPass != uRePass){
+            span.innerHTML = "<font color='red' size='2'>两次密码不一致</font>";
+            return false;
+        }else{
+            span.innerHTML = "";
+            return true;
+        }
+    }
+</script>
+
+
+
+
+</center>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+        <script type="text/javascript" src="static/layui/layui.js"></script>
+        <script src="static/js/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="static/layui/css/layui.css"  media="all">
+
+
+    <style type="text/css">
+        a{ text-decoration:none;  }
+    </style>
+</head>
+
+<body background="../static/bg2.png" backgroundsize="50%" style=" background-repeat:no-repeat ;background-size:100% 100%;
+background-attachment: fixed;">
+<style type="text/css">
+
+a.two:link {font-size:20px;
+color: #000000}
+a.two:visited {color: #000000}
+a.two:hover {font-size: 150%}
+
+</style>
+
+
+
+<center>
+<br>
+<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<h1>欢迎来到：案例录入与故障推理系统</h1>
+<br>
+<br>
+<br>
+<br>
+    <br>
+<br>
+<br>
+    <form method="post" action="/" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>
+                用户名：
+            </td>
+            <td>
+                <input class="layui-input"  type="text" id="uname" name="uname" >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p style="font-size:20px;visibility:hidden;" >1</p>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                密码：
+            </td>
+        <td>
+            <input class="layui-input"  type="password" id="upwd" name="upwd">
+        </td>
+        <tr>
+        <td>
+             <p style="font-size:20px;visibility:hidden;" >1</p>
+        </td>
+    </tr>
+
+
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <!--<button class="layui-btn layui-btn-sm" type="submit" onclick="login()" >登录</button>-->
+                <button class="layui-btn layui-btn-sm" type="submit">登录</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="layui-btn layui-btn-sm" type="submit" href="register" >注册</a>
+            </td>
+
+        </tr>
+    </table>
+ </form>
+
+{% for msg in get_flashed_messages(category_filter=["err"]): %}
+<script>alert("{{ msg }}")</script>
+{% endfor %}
+
+
+
+</center>
+
+</body>
+</html>

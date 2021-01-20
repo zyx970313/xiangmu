@@ -1,0 +1,668 @@
+<html>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <head>
+    <title>流程图录入</title>
+        <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <script type="text/javascript" src="static/layui/layui.js"></script>
+  <link rel="stylesheet" href="static/layui/css/layui.css"  media="all">
+  </head>
+<body >
+  <div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+      <!--<script src="static/js/jquery-3.3.1.js"></script>-->
+      <script src="static/js/echarts.min.js"></script>
+      <script src="static/js/jquery.min.js"></script>
+    <div class="layui-logo">故障录入与案例查询系统 </div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="/">主页</a></li>
+      <li class="layui-nav-item layui-this">
+        <a href="javascript:;">故障录入</a>
+        <dl class="layui-nav-child">
+          <dd><a href="single_fault">单故障录入</a></dd>
+          <dd><a href="batch_fault">批量故障录入</a></dd>
+          <dd><a href="flowchart">流程图录入</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item">
+        <a href="javascript:;">案例查询</a>
+        <dl class="layui-nav-child">
+          <dd><a href="precise_query">精确查询</a></dd>
+          <dd><a href="fuzz_query">模糊查询</a></dd>
+        </dl>
+      </li>
+        </li><li class="layui-nav-item">
+        <a href="map">知识地图</a>
+        </li>
+    </ul>
+  </div>
+
+     <!--<div class="layui-side layui-bg-black">-->
+    <!--<div class="layui-side-scroll">-->
+      <!--&lt;!&ndash; 左侧导航区域（可配合layui已有的垂直导航） &ndash;&gt;-->
+            <!--<ul class="layui-nav layui-nav-tree"  lay-filter="test">-->
+          <!--<li class="layui-nav-item layui-nav-itemed">-->
+           <!--<ul class="layui-nav layui-nav-tree"  lay-filter="test">-->
+        <!--<li class="layui-nav-item layui-nav-itemed">-->
+          <!--<a class="" href="single_fault">单故障录入</a>-->
+        <!--</li>-->
+
+          <!--<li class="layui-nav-item"><a href="batch_fault" >批量故障录入</a></li>-->
+          <!--<li class="layui-nav-item layui-this"><a href="flowchart">流程图录入</a></li>-->
+          <!--</li>-->
+
+      <!--</ul>-->
+          <!--</li>-->
+            <!--</ul>-->
+    <!--</div>-->
+  <!--</div>-->
+  <script type="text/javascript" src="/layui/layui.js"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+  <br>
+  <br>
+      <div>
+          <div style="padding: 15px;">
+    <center>
+      <h2>案例录入模块——流程图录入</h2>
+         <br><br>
+    </center>
+<form method="post" action="./flowchart"  enctype="multipart/form-data">
+    <center>
+    <a href="javascript:void(0)" class="file">
+    <input id="MYFile" type="file" accept="image/*" name="file">
+    </a>
+    <!--<img class="layui-upload-img" style="width:300px;height:300px" id="demo1" >-->
+    <button id="button1" class="layui-btn layui-btn-sm"  >识别</button>
+        </center>
+</form>
+<div>
+
+			<img id="MYimg" src="" />
+
+
+    {% for msg in get_flashed_messages(category_filter=['err']) %}
+    <script>alert("{{ msg }}")</script>
+    {% endfor %}
+
+
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <table>
+        <tr>
+            <td>
+                <div id="main" style="width: 500px;height:600px;"></div>
+            </td>
+            <td>
+                <table id="div1"></table>
+            </td>
+        </tr>
+    </table>
+
+
+    <script>
+		var regexImageFiler;
+		var imgReaderl = new FileReader();
+		regexImageFiler = /^(?:image\/bmp|image\/png|image\/jpeg|image\/jpg|\/gif)$/i;
+		imgReaderl.onload = function(evt) {
+			$("#MYimg").attr("src", evt.target.result);
+		}
+		$("#MYFile").change(function() {
+			var imgfFile = $("#MYFile").prop("files")[0];
+			if(!regexImageFiler.test(imgfFile.type)) {
+				alert("选择有效图片");
+			}
+			imgReaderl.readAsDataURL(imgfFile);
+
+		})
+	</script>
+
+
+<script type="text/javascript">
+    var myChart;
+    $.post('/flowData',{a:100,b:50},function (data) {
+            console.log(data);
+            jsondata=JSON.parse(data)//把获取到的json数据解析出来
+            console.log("jsondata: ", jsondata);
+            createChart(jsondata);
+            createCase(jsondata);
+
+
+    });
+
+function createCase(jsondata){
+     console.log('case_num',jsondata.case_num)
+     console.log('allpath.length',jsondata.allpath[0].length)
+     var obj=document.getElementById('div1');
+     var rowa=obj.insertRow(-1);
+     var ca=rowa.insertCell(0);
+     ca.innerHTML='<a>故障特征</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+     var rowb=obj.insertRow(-1);
+     var cb=rowb.insertCell(0);
+     cb.innerHTML='<textarea name="text" style="margin:15px;height:60px;width:300px;"></textarea>';
+     for(var i=0;i<jsondata.case_num;i++){
+
+
+        var row=obj.insertRow(-1);
+        var c0=row.insertCell(0);
+        var cnt=i+1;
+        c0.innerHTML='<a>案例'+cnt+'解决方案</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+        var row1=obj.insertRow(-1);
+
+        var c1=row1.insertCell(-1);
+        var temp="";
+        for(var k=0;k<jsondata.allpath[i].length;k++){
+          temp+=jsondata.case_text[i][k];
+
+        }
+        c1.innerHTML='<textarea name="1" id="phe'+i+'" style="margin:15px;height:60px;width:300px;">'+temp+'</textarea>';
+
+
+
+        <!--for(var j=0;j<jsondata.allpath[i].length;j++){-->
+            <!--var c1=row1.insertCell(-1);-->
+            <!--var t=jsondata.case_text[i][j];-->
+            <!--c1.innerHTML='<input class="layui-input" name="1" id="phe'+i+'" value='+t+' ></input>';-->
+        <!--}-->
+        }
+        var obj=document.getElementById('div1');
+        var row=obj.insertRow(-1);
+        var c1=row.insertCell(0);
+        var c2=row.insertCell(1);
+        var c3=row.insertCell(2);
+        var c4=row.insertCell(3);
+        var c5=row.insertCell(4);
+        var c6=row.insertCell(5);
+        var c7=row.insertCell(6);
+        c7.innerHTML='<button  class="layui-btn layui-btn-sm" style="margin-right: 20px" onclick="save()">保  存</button>';
+
+   	}
+
+function createChart(jsondata) {
+    console.log("createChart");
+    <!--var list_chart = [];-->
+    <!--for(var i = 0; i < jsondata.list_chart.length; i++) {-->
+        <!--if(list_chart.length == 0) {-->
+            <!--list_chart.push(jsondata.list_chart[i]);-->
+        <!--} else {-->
+            <!--var flag = true;-->
+            <!--var len = list_chart.length;-->
+            <!--for(var j = 0; j < len; j++) {-->
+                <!--if(list_chart[j].name == jsondata.list_chart[i].name) {-->
+                    <!--flag = false;-->
+                    <!--break;-->
+                <!--}-->
+            <!--}-->
+            <!--if(flag) {-->
+                <!--list_chart.push(jsondata.list_chart[i]);-->
+            <!--}-->
+        <!--}-->
+    <!--}-->
+    console.log("list_chart: ", jsondata.list_chart);
+    // 基于准备好的dom，初始化echarts实例
+    myChart = echarts.init(document.getElementById('main'));
+
+
+// 指定图表的配置项和数据
+var option = {
+    title: {
+        text: ''
+    },
+    //tooltip: {},
+    series: [{
+        type: 'graph',
+        layout: 'none',
+        symbolSize: 50,
+        label: {
+            show: true
+        },
+        <!--edgeSymbol: ['circle'],-->
+        edgeSymbol: ['circle', 'arrow'],
+        edgeSymbolSize: [4, 10],
+        edgeLabel: {
+            fontSize: 20
+        },
+        data: jsondata.list_chart,
+        links: jsondata.links,
+        lineStyle: {
+            opacity: 0.9,
+            width: 3,
+            curveness: 0
+        }
+    }]
+};
+
+// 使用刚指定的配置项和数据显示图表。
+myChart.setOption(option);
+
+
+//绑定鼠标事件
+myChart.on("mousedown", function(e) {
+    if (e.event.event.button === 0) { //左键单击事件
+        if (e.event.target.name == "label") { //点击+号 添加审批
+            addNode(e.data.source);
+        } else if (e.dataType == "node" && e.data.value != 999) {
+             cnn(e);
+        }
+    }
+    if (e.event.event.button === 2 && e.dataType == "node") { //右键node点击事件
+        if (e.dataIndex === 0) {
+            //e中有当前节点信息
+            showMenu(e, [{
+                "name": "重命名",
+                "fn": function() {
+                    cnn(e);
+                }
+            }]);
+        } else if (e.data.value === 999) {
+            showMenu(e, [{
+                "name": "重命名",
+                "fn": function() {
+                    cnn(e);
+                }
+            }]);
+        } else {
+            //e中有当前节点信息
+            showMenu(e, [ {
+                "name": "删除节点",
+                "fn": function() {
+                    delNode(e.data);
+                    alert("删除节点成功");
+                }
+            }, {
+                "name": "重命名",
+                "fn": function() {
+                    cnn(e);
+                }
+            }]);
+        }
+    }
+})
+
+var style_ul = "padding:0px;margin:0px;border: 1px solid #ccc;background-color: #fff;position: absolute;left: 0px;top: 0px;z-index: 2;display: none;";
+var style_li = "list-style:none;padding: 5px; cursor: pointer; padding: 5px 20px;margin:0px;";
+var style_li_hover = style_li + "background-color: #00A0E9; color: #fff;";
+
+//右键菜单容器
+var menubox = $("<div class='echartboxMenu' style='" + style_ul + "'><div style='text-align:center;background:#ccc'></div><ul style='margin:0px;padding:0px;'></ul></div>")
+    .appendTo($(document.body));
+
+//移除浏览器右键菜单
+myChart.getDom().oncontextmenu = menubox[0].oncontextmenu = function() {
+    return false;
+}
+
+//点击其他位置隐藏菜单
+$(document).click(function() {
+    menubox.hide()
+});
+}
+
+
+
+
+//显示菜单
+function showMenu(e, menus) {
+    $("div", menubox).text(e.name);
+    var menulistbox = $("ul", menubox).empty();
+    $(menus).each(function(i, item) {
+        var li = $("<li style='" + style_li + "'>" + item.name + "</li>")
+            .mouseenter(function() {
+                $(this).attr("style", style_li_hover);
+            })
+            .mouseleave(function() {
+                $(this).attr("style", style_li);
+            })
+            .click(function() {
+                item["fn"].call(this);
+                menubox.hide();
+            });
+        menulistbox.append(li);
+    });
+    menubox.css({
+        "left": event.x,
+        "top": event.y
+    }).show();
+}
+//添加节点方法
+function addNode(e) {
+    var n = prompt("新增节点名称：");
+    if (n == "") {
+        alert("新增节点名称不能为空！")
+        return;
+    }
+    if (n==undefined){
+        return;
+    }
+    var options = myChart.getOption();
+    var data = options.series[0].data;
+    if(isRepect(n,data)){
+        alert("节点名称不能重复！")
+        return;
+    }
+    var inx = e + 1;
+    var temp = Object.assign({}, data[e]);
+    temp.name = n,
+        temp.value = inx;
+    temp.x = temp.x + 100;
+    for (var i = inx; i < data.length; i++) {
+        if (data[i].value == 999) {
+            data[i].x += 100;
+        } else {
+            data[i].value = i + 1;
+            data[i].x += 100;
+        }
+    }
+    data.splice(inx, 0, temp);
+    var links = linkdata(data.length);
+    myChart.setOption({
+        series: [{
+            data: data,
+            links: links
+        }]
+    });
+}
+//删除节点方法
+function delNode(e) {
+    var options = myChart.getOption();
+    var data = options.series[0].data;
+    var inx = e.value;
+    data.splice(inx, 1);
+    for (var i = inx; i < data.length; i++) {
+        if (data[i].value == 999) {
+            data[i].x -= 100;
+        } else {
+            data[i].value = i;
+            data[i].x -= 100;
+        }
+    }
+    var links = linkdata(data.length);
+    myChart.setOption({
+        series: [{
+            data: data,
+            links: links
+        }]
+    });
+}
+//linkdata重组方法
+function linkdata(length) {
+    var links = [];
+    for (var i = 0; i < length - 1; i++) {
+        links.push({
+            source: i,
+            target: i + 1,
+            symbolSize: [5, 20],
+            label: {
+                show: true,
+                formatter: '+',
+                fontSize: 50,
+                color: "#B53F00"
+            },
+        });
+    }
+    return links;
+}
+//重命名弹窗
+function cnn(e) {
+    var n = prompt("节点重命名：", e.name);
+    if (n != null && n != "") {
+        changeNodeName(e.data, n);
+    }
+    if (n == "") {
+        alert("节点名称不能为空！")
+    }
+}
+
+//重命名方法
+function changeNodeName(e, st) {
+    var options = myChart.getOption();
+    var data = options.series[0].data;
+    console.log("data:",data);
+    var ds = data.find(item => item.value == e.value);
+    var ds1 = data.find(item => item.name == st);
+    if(ds1!=undefined && ds1!=ds){
+        alert("节点名称不能重复！")
+        return
+    }
+    ds.name = st;
+    console.log(data)
+    myChart.setOption({
+        series: [{
+            data: data,
+        }]
+    });
+    alert("修改成功！")
+}
+//是否具有重复项
+function isRepect(st,data){
+    var ds = data.find(item => item.name == st);
+    if(ds!=undefined){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+</script>
+<script>
+layui.use('upload', function(){
+  var $ = layui.jquery
+  ,upload = layui.upload;
+
+  //普通图片上传
+  var uploadInst = upload.render({
+    elem: '#test1'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#demo1').attr('src', result); //图片链接（base64）
+      });
+    }
+    ,done: function(res){
+      //如果上传失败
+      if(res.code > 0){
+        return layer.msg('上传失败');
+      }
+      //上传成功
+    }
+    ,error: function(){
+      //演示失败状态，并实现重传
+      var demoText = $('#demoText');
+      demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+      demoText.find('.demo-reload').on('click', function(){
+        uploadInst.upload();
+      });
+    }
+  });
+
+  //多图片上传
+  upload.render({
+    elem: '#test2'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,multiple: true
+    ,before: function(obj){
+      //预读本地文件示例，不支持ie8
+      obj.preview(function(index, file, result){
+        $('#demo2').append('<img src="'+ result +'" alt="'+ file.name +'" class="layui-upload-img">')
+      });
+    }
+    ,done: function(res){
+      //上传完毕
+    }
+  });
+
+  //指定允许上传的文件类型
+  upload.render({
+    elem: '#test3'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,accept: 'file' //普通文件
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res);
+    }
+  });
+  upload.render({ //允许上传的文件后缀
+    elem: '#test4'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,accept: 'file' //普通文件
+    ,exts: 'zip|rar|7z' //只允许上传压缩文件
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+  upload.render({
+    elem: '#test5'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,accept: 'video' //视频
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+  upload.render({
+    elem: '#test6'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,accept: 'audio' //音频
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+
+  //设定文件大小限制
+  upload.render({
+    elem: '#test7'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,size: 60 //限制文件大小，单位 KB
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+
+  //同时绑定多个元素，并将属性设定在元素上
+  upload.render({
+    elem: '.demoMore'
+    ,before: function(){
+      layer.tips('接口地址：'+ this.url, this.item, {tips: 1});
+    }
+    ,done: function(res, index, upload){
+      var item = this.item;
+      console.log(item); //获取当前触发上传的元素，layui 2.1.0 新增
+    }
+  })
+
+  //选完文件后不自动上传
+  upload.render({
+    elem: '#test8'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,auto: false
+    //,multiple: true
+    ,bindAction: '#test9'
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+
+  //拖拽上传
+  upload.render({
+    elem: '#test10'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,done: function(res){
+      layer.msg('上传成功');
+      layui.$('#uploadDemoView').removeClass('layui-hide').find('img').attr('src', res.files.file);
+      console.log(res)
+    }
+  });
+
+  //多文件列表示例
+  var demoListView = $('#demoList')
+  ,uploadListIns = upload.render({
+    elem: '#testList'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,accept: 'file'
+    ,multiple: true
+    ,auto: false
+    ,bindAction: '#testListAction'
+    ,choose: function(obj){
+      var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+      //读取本地文件
+      obj.preview(function(index, file, result){
+        var tr = $(['<tr id="upload-'+ index +'">'
+          ,'<td>'+ file.name +'</td>'
+          ,'<td>'+ (file.size/1024).toFixed(1) +'kb</td>'
+          ,'<td>等待上传</td>'
+          ,'<td>'
+            ,'<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
+            ,'<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+          ,'</td>'
+        ,'</tr>'].join(''));
+
+        //单个重传
+        tr.find('.demo-reload').on('click', function(){
+          obj.upload(index, file);
+        });
+
+        //删除
+        tr.find('.demo-delete').on('click', function(){
+          delete files[index]; //删除对应的文件
+          tr.remove();
+          uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+        });
+
+        demoListView.append(tr);
+      });
+    }
+    ,done: function(res, index, upload){
+      if(res.files.file){ //上传成功
+        var tr = demoListView.find('tr#upload-'+ index)
+        ,tds = tr.children();
+        tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+        tds.eq(3).html(''); //清空操作
+        return delete this.files[index]; //删除文件队列已经上传成功的文件
+      }
+      this.error(index, upload);
+    }
+    ,error: function(index, upload){
+      var tr = demoListView.find('tr#upload-'+ index)
+      ,tds = tr.children();
+      tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+      tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+    }
+  });
+
+  //绑定原始文件域
+  upload.render({
+    elem: '#test20'
+    ,url: 'https://httpbin.org/post' //改成您自己的上传接口
+    ,done: function(res){
+      layer.msg('上传成功');
+      console.log(res)
+    }
+  });
+
+});
+</script>
+</div>
+    </center>
+
+
+          </div>
+      </div>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>批量录入</title>
+    <script src="static/js/d3.js"></script>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="static/layui/layui.js"></script>
+    <link rel="stylesheet" href="static/layui/css/layui.css"  media="all">
+        <!-- 引入样式 -->
+    <!--<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">-->
+    <link rel="stylesheet" href="static/css/element_index.css" media="all">
+
+    <script src="static/js/jquery-3.3.1.js"></script>
+</head>
+<style>
+
+form{
+margin:0px;
+display: inline
+}
+</style>
+
+<body>
+
+  <div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">故障录入与案例查询系统 </div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="/">主页</a></li>
+      <li class="layui-nav-item layui-this">
+        <a href="javascript:;">故障录入</a>
+        <dl class="layui-nav-child">
+          <dd><a href="single_fault">单故障录入</a></dd>
+          <dd><a href="batch_fault">批量故障录入</a></dd>
+          <dd><a href="flowchart">流程图录入</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item">
+        <a href="javascript:;">案例查询</a>
+        <dl class="layui-nav-child">
+          <dd><a href="precise_query">精确查询</a></dd>
+          <dd><a href="fuzz_query">模糊查询</a></dd>
+        </dl>
+      </li>
+        <li class="layui-nav-item">
+        <a href="map">知识地图</a>
+        </li>
+
+    </ul>
+  </div>
+
+     <!--<div class="layui-side layui-bg-black">-->
+    <!--<div class="layui-side-scroll">-->
+      <!--&lt;!&ndash; 左侧导航区域（可配合layui已有的垂直导航） &ndash;&gt;-->
+            <!--<ul class="layui-nav layui-nav-tree"  lay-filter="test">-->
+          <!--<li class="layui-nav-item layui-nav-itemed">-->
+           <!--<ul class="layui-nav layui-nav-tree"  lay-filter="test">-->
+        <!--<li class="layui-nav-item layui-nav-itemed">-->
+          <!--<a class="" href="single_fault">单故障录入</a>-->
+
+        <!--</li>-->
+
+          <!--<li class="layui-nav-item lay"><a href="batch_fault" >批量故障录入</a></li>-->
+          <!--<li class="layui-nav-item"><a href="flowchart">流程图录入</a></li>-->
+          <!--</li>-->
+
+           <!--</ul>-->
+            <!--</ul>-->
+    <!--</div>-->
+  <!--</div>-->
+ <script type="text/javascript" src="/layui/layui.js"></script>
+<script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+</script>
+ <br>
+ <br>
+      <div >
+          <div style="padding: 15px;">
+    <center>
+
+            <h2>案例录入模块——批量故障录入</h2>
+            <br><br>
+        <div id="app">
+    <template>
+        <div>
+
+            <el-upload
+              class="upload-demo"
+              drag
+              action="./batch_fault"
+              multiple>
+              <i class="el-icon-upload"></i>
+              <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+            </el-upload>
+         </div>
+    </template>
+</div>
+             <!--<form method="post" action="./batch_fault" enctype="multipart/form-data">-->
+                 <!--<table>-->
+                     <!--<tr>-->
+                         <!--<td>-->
+                             <!--<input type="file"  name="file">-->
+                         <!--</td>-->
+                         <!--<td>-->
+                             <!--<button id="button1" class="layui-btn layui-btn-sm">批量智能识别</button>&nbsp &nbsp &nbsp &nbsp &nbsp-->
+                         <!--</td>-->
+                     <!--</tr>-->
+                 <!--</table>-->
+             <!--</form>-->
+        <tr>
+            <td>
+
+            </td>
+
+                            <td>
+                                <button id="map" class="layui-btn layui-btn-sm" onclick = "test()">识别</button>
+                            </td>
+            </tr>
+
+                    </table>
+
+<!--<button type="button" class="layui-btn" id="test3"><i class="layui-icon"></i>上传文件</button>-->
+
+
+
+
+<hr>
+    </center>
+
+<table id = "div1">
+
+          </table>
+          </div>
+  </div>
+
+
+
+<script language = "javascript" type = "text/javascript">
+
+        var textarea_num=0;
+
+		function test(){
+		 $.post('/batch_input',
+         function(data){
+         console.log("data",data);
+         <!--jsondata=JSON.parse(data)//把获取到的json数据解析出来-->
+         jsondata=data;//把获取到的json数据解析出来
+         console.log("jsondata:",jsondata);
+         $("#div1").html("");
+         for(var i=0;i<jsondata.c;i++){
+            var cnt=i+1;
+			var obj=document.getElementById('div1');
+            var row=obj.insertRow(-1);
+            var c0=row.insertCell(0);
+            c0.innerHTML='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a>案例'+cnt+'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+            var c1=row.insertCell(1);
+            c1.innerHTML='<textarea name="1" id="phe'+i+'" style="margin:15px;height:60px;width:300px;"></textarea>';
+            document.getElementById("phe"+i).innerText=jsondata.pheno[i];
+            var c2=row.insertCell(2);
+            c2.innerHTML='<textarea name="2" id="me'+i+'" style="margin:15px;height:60px;width:300px;"></textarea>';
+            document.getElementById("me"+i).innerText=jsondata.method[i];
+            }
+            var obj=document.getElementById('div1');
+            var row=obj.insertRow(-1);
+            var c1=row.insertCell(0);
+            var c2=row.insertCell(1);
+            var c3=row.insertCell(2);
+            var c4=row.insertCell(3);
+            var c5=row.insertCell(4);
+            c5.innerHTML='<button  class="layui-btn layui-btn-sm" style="margin-right: 20px" onclick="save()">录  入</button>';
+            textarea_num=$('textarea').length; 
+            console.log("textarea_num",textarea_num);
+
+            })
+
+    		}
+		function test2(){
+			//删除一个元素
+			//也可以通过属性获得新增元素的父元素
+			//document.getElementById("id1").parentNode
+			document.getElementById("div1").removeChild(document.getElementById("id1"));
+		}
+
+		function save(){
+		val={}
+        for(var i=0;i<textarea_num;i++){
+        val["ID" + i ]=$("textarea:eq("+i+")").val();
+        }
+        console.log("val",val);
+        console.log(typeof val);
+		$.post('/batch_save',val,
+         function(data){
+         console.log("data",data);
+         jsondata=JSON.parse(data)//把获取到的json数据解析出来
+         console.log("jsondata:",jsondata);
+            })
+         alert("保存成功！");
+		}
+</script>
+
+
+
+    <!--<el-button @click="visible = true">Button</el-button>-->
+    <!--<el-dialog :visible.sync="visible" title="Hello world">-->
+      <!--<p>Try Element</p>-->
+    <!--</el-dialog>-->
+
+
+</body>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- 引入组件库 -->
+    <!--<script src="https://unpkg.com/element-ui/lib/index.js"></script>-->
+<script src="static/js/index.js"></script>
+<script src="static/js/vue.js"></script>
+<script src="static/js/element-index.js"></script>
+    <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { visible: false }
+      }
+    })
+  </script>
+</html>

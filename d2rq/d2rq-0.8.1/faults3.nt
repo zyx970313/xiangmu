@@ -1,0 +1,228 @@
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/1> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/2> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/3> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/4> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/5> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/6> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/7> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/8> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/9> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/10> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/11> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> "F\u7535\u6E90\u4FDD\u9669\u7BA1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> "F\u7535\u6E90\u63A7\u5236\u6A21\u5757" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature6> "F\u7535\u6E90\u6A21\u5757" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/1> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features #1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> "F\u7535\u6E90" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> "\u4F9B\u7535" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> "\u5F00\u5173\u4F4D\u7F6E" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> "\u76F8\u5E94\u5706\u7B52IO\u63D2\u677F" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> "\u76F8\u5E94\u5706\u7B52\u6A21\u62DF\u677F" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/2> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features #2" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> "\u76F8\u5E94\u5706\u7B52\u63A7\u5236\u677F" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> "\u66F4\u6362" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> "F\u7EC4\u5408" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> "3"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> "1X11\u63D2\u59346\u30017\u4E24\u70B9" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> "5#424\u63D2\u677F" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/3> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features #3" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> "\u8F93\u51FA\u4FE1\u53F7" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> "\u68C0\u67E5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> "\u63A7\u5236\u673A\u67DC" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> "4"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> "W128\u7535\u7F06" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> "\u7535\u6E90\u7BB1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/4> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features #4" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> "\u63A7\u5236\u7BB1\u7EE7\u7535\u5668" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> "\u68C0\u67E5\u529F\u80FD" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> "\u201C\u7535\u673A\u542F\u52A8\u201D\u5F00\u5173" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> "5"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> "\u63A7\u5236\u7BB1\u7EE7\u7535\u5668" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> "W128\u7535\u7F06" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature6> "\u7535\u6E90\u7BB1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/5> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features #5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> "\u201C\u7535\u673A\u542F\u52A8\u201D\u5F00\u5173" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> "\u5F00\u5173\u91CF\u8F93\u5165\u677FIII" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> "\u5F00\u5173\u91CF\u8F93\u51FA\u677F" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> "6"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> "\u8F66\u8F86\u8F6C\u63A5\u76D2" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> "\u6BD4\u4F8B\u6EA2\u6D41\u9600YV1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/6> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features #6" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> "\u201C\u8C03\u538B\u201D\u7535\u4F4D\u5668" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> "\u68C0\u67E5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> "\u6BD4\u4F8B\u6EA2\u6D41\u9600YV1\u7535\u7F06\u63D2\u5934" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> "7"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> "OLP\u6309\u94AE" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> "\u5382\u5BB6\u89E3\u51B3" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/7> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features #7" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> "\u62A5\u8B66\u6307\u793A\u706F" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> "\u64CD\u4F5C\u540A\u673A" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> "\u51CF\u5C0F\u8D77\u91CD\u529B\u77E9" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> "8"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> "\u521A\u67D4\u8F6C\u6362\u6CB9\u7F38" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> "\u7EF4\u4FEE" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/8> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features #8" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> "\u8C03\u6574\u87BA\u6BCD\u4F4D\u7F6E" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> "\u68C0\u67E5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> "\u94A2\u4E1D\u7EF3" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> "9"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> "\u66F4\u6362\u63A5\u53E3" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> "\u66F4\u6362\u4ECE\u7AD9\u6709\u7EBF\u6570\u4F20\u5355\u5143" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/9> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features #9" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> "\u7535\u7F06\u8FDE\u63A5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> "\u68C0\u67E5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> "\u53C2\u6570\u8BBE\u7F6E" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> "10"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> "\u9501\u6B62\u673A\u6784\u9500\u8F74" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> "\u8FD0\u52A8\u6B63\u5E38" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/10> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features #10" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> "\u624B\u67C4" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> "\u68C0\u67E5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> "\u66F4\u6362" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> "11"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> "1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> "1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/11> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features #11" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> "1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> "1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> "1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#sol_features/11> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> "HL\u5355\u5143\u529F\u80FD" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> "\u5706\u7B52" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> "F\u7535\u6E90" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature6> "F\u8BA1\u7B97\u673A" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> "\u98DE\u706F\u4E0D\u4EAE" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> "1"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/1> <http://www.w3.org/2000/01/rdf-schema#label> "features #1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/1> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> "\u4E0D\u5728\u4F4D" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> "\u8F66\u8F86\u529F\u80FD\u68C0\u67E5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> "\u7535B\u901A\u8DEF" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> "F\u7EC4\u5408" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature6> "\u5706\u7B52\u8235\u673A\u6FC0\u6D3B" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> "\u5706\u7B52B\u7EC4\u6FC0\u6D3B" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> "2"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/2> <http://www.w3.org/2000/01/rdf-schema#label> "features #2" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/2> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> "\u63A7\u5236\u6545\u969C" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> "Y\u534F\u540C\u4E0A\u8BFE" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> "F\u89E3\u9501\u6545\u969C" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> "F\u8BA1\u7B97\u673A" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature6> "\u7AD6\u8D77\u4E0D\u5230\u4F4D" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> "\u7A0B\u5E8F\u6267\u884C\u8FC7\u7A0B" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> "3"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/3> <http://www.w3.org/2000/01/rdf-schema#label> "features #3" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/3> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> "\u89E3\u9501\u6545\u969C" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> "\u7A0B\u63A7" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> "\u7535\u673A" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> "\u624B\u63A7\u53F0" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature6> "\u8F66\u8F86\u7B80\u7A0B\u68C0\u67E5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> "\u624B\u52A8\u64CD\u4F5C" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> "4"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/4> <http://www.w3.org/2000/01/rdf-schema#label> "features #4" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/4> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> "\u4E0D\u80FD\u542F\u52A8" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> "\u8F66\u8F86\u529F\u80FD\u68C0\u67E5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> "\u7535\u673A" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> "\u624B\u63A7\u53F0" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> "\u7A0B\u63A7\u64CD\u4F5C" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> "5"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/5> <http://www.w3.org/2000/01/rdf-schema#label> "features #5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/5> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> "\u4E0D\u80FD\u542F\u52A8" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> "\u8F66\u8F86\u529F\u80FD\u68C0\u67E5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> "\u6DB2\u538B\u7CFB\u7EDF" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> "\u624B\u63A7\u53F0" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> "\u624B\u52A8\u72B6\u6001" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> "6"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/6> <http://www.w3.org/2000/01/rdf-schema#label> "features #6" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/6> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> "\u65E0\u6CD5\u5EFA\u538B" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> "\u540A\u88C5\u64CD\u4F5C" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> "\u7EA2\u8272\u62A5\u8B66\u706F" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> "\u540A\u673A" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> "\u540A\u88C5\u8FC7\u7A0B" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> "7"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/7> <http://www.w3.org/2000/01/rdf-schema#label> "features #7" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/7> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> "\u6545\u969C" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> "\u540A\u88C5\u64CD\u4F5C" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> "\u521A\u67D4\u8F6C\u6362\u94A2\u4E1D\u7EF3" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> "\u540A\u5177" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> "\u540A\u88C5\u8FC7\u7A0B" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> "8"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/8> <http://www.w3.org/2000/01/rdf-schema#label> "features #8" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/8> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> "\u4E0D\u540C\u6B65" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> "HL\u5355\u5143\u529F\u80FD" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> "\u5355\u8DEF" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> "\u6570\u4F20\u7CFB\u7EDF" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> "\u4E0D\u901A" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> "9"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/9> <http://www.w3.org/2000/01/rdf-schema#label> "features #9" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/9> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> "\u6709\u7EBF" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> "XL\u64CD\u4F5C" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> "\u5706\u7B52" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> "\u505C\u653E\u67B6\u9501\u7D27\u673A\u6784" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> "\u540A\u5378\u8FC7\u7A0B" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> "10"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/10> <http://www.w3.org/2000/01/rdf-schema#label> "features #10" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/10> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> "\u65E0\u6CD5\u9501\u7D27" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> "\u6545\u969C" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> "\u7EA2\u8272\u62A5\u8B66\u706F" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> "\u4E0D\u4EAE" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature6> "1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> "q" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> "11"^^<http://www.w3.org/2001/XMLSchema#integer> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/11> <http://www.w3.org/2000/01/rdf-schema#label> "features #11" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/11> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> "\u968F\u8F66\u540A\u673A" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/faults3.nt#features/11> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features sol_feature1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/fea2sol> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> <http://www.w3.org/2000/01/rdf-schema#label> "features feature1" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature6> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features sol_feature6" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<http://www.w3.org/2000/01/rdf-schema#label> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> <http://www.w3.org/2000/01/rdf-schema#label> "features id" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature6> <http://www.w3.org/2000/01/rdf-schema#label> "features feature6" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features sol_feature5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features id" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> <http://www.w3.org/2000/01/rdf-schema#label> "features feature5" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature5> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features sol_feature4" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> <http://www.w3.org/2000/01/rdf-schema#label> "features feature4" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature4> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features sol_feature3" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> <http://www.w3.org/2000/01/rdf-schema#label> "features feature3" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature3> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features sol_feature2" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features_sol_feature2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> <http://www.w3.org/2000/01/rdf-schema#label> "features" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> <http://www.w3.org/2000/01/rdf-schema#label> "sol_features" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/sol_features> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> <http://www.w3.org/2000/01/rdf-schema#label> "features feature2" .
+<file:///D:/pycode/library/d2rq/d2rq-0.8.1/vocab/features_feature2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property> .
